@@ -21,6 +21,7 @@
 package org.wahlzeit.handlers;
 
 import org.wahlzeit.model.AccessRights;
+import org.wahlzeit.model.GpsLocation;
 import org.wahlzeit.model.Photo;
 import org.wahlzeit.model.PhotoManager;
 import org.wahlzeit.model.Tags;
@@ -68,6 +69,8 @@ public class UploadPhotoFormHandler extends AbstractWebFormHandler {
 	 */
 	protected String doHandlePost(UserSession us, Map args) {
 		String tags = us.getAndSaveAsString(args, Photo.TAGS);
+		String latString = us.getAndSaveAsString(args, Photo.LATITUDE);
+		String lonString = us.getAndSaveAsString(args, Photo.LONGITUDE);
 
 		if (!StringUtil.isLegalTagsString(tags)) {
 			us.setMessage(us.cfg().getInputIsInvalid());
@@ -87,6 +90,15 @@ public class UploadPhotoFormHandler extends AbstractWebFormHandler {
 			user.addPhoto(photo); 
 			
 			photo.setTags(new Tags(tags));
+			if (latString != null && lonString != null) {
+				try {
+					double lat = Double.valueOf(latString);
+					double lon = Double.valueOf(lonString);
+					photo.setLocation(new GpsLocation(lat, lon));
+				} catch (Exception e) {
+					SysLog.logThrowable(e);
+				}
+			}
 
 			pm.savePhoto(photo);
 

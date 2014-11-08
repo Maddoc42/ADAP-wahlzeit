@@ -57,6 +57,8 @@ public class Photo extends DataObject {
 	public static final String LOCATION = "location";
 
 	public static final String TAGS = "tags";
+	public static final String LATITUDE = "latitude";
+	public static final String LONGITUDE = "longitude";
 
 	public static final String STATUS = "status";
 	public static final String IS_INVISIBLE = "isInvisible";
