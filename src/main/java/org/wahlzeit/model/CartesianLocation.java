@@ -1,6 +1,8 @@
 package org.wahlzeit.model;
 
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.Objects;
 
 import org.wahlzeit.utils.Assert;
@@ -18,7 +20,11 @@ public final class CartesianLocation extends AbstractLocation {
 
 	private final double x, y, z;
 
-	public CartesianLocation(double x, double y, double z) {
+	@JsonCreator
+	public CartesianLocation(
+			@JsonProperty("x") double x,
+			@JsonProperty("y") double y,
+			@JsonProperty("z") double z) {
 		this.x = x;
 		this.y = y;
 		this.z =  z;

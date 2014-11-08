@@ -1,6 +1,8 @@
 package org.wahlzeit.model;
 
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.Objects;
 
 import org.wahlzeit.utils.Assert;
@@ -23,7 +25,10 @@ public final class GpsLocation extends AbstractLocation {
 	 * @param latitude in degrees
 	 * @param longitude in degrees
 	 */
-	public GpsLocation(double latitude, double longitude) {
+	@JsonCreator
+	public GpsLocation(
+			@JsonProperty("latitude") double latitude,
+			@JsonProperty("longitude") double longitude) {
 		Assert.assertTrue(latitude >= -90 && latitude <= 90, "latitude must be >= -90 and <= 90");
 		Assert.assertTrue(longitude >= -180 && longitude <= 180, "longitude must be >= -90 and <= 90");
 		this.latitude = latitude;

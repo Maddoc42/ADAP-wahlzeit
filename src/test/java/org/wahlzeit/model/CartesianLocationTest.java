@@ -1,16 +1,28 @@
 package org.wahlzeit.model;
 
 
-import junit.framework.Assert;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 public final class CartesianLocationTest {
 
+	private final CartesianLocation location = new CartesianLocation(1.1, 2.2, 3.3);
+
 	@Test
 	public void testStringConversion() {
-		CartesianLocation location = new CartesianLocation(1.1, 2.2, 3.3);
 		String locationString = location.asString();
 		Assert.assertEquals(CartesianLocation.fromString(locationString), location);
 	}
+
+
+	@Test
+	public void testJacksonConversion() throws Exception {
+		ObjectMapper mapper = new ObjectMapper();
+		JsonNode json = mapper.valueToTree(location);
+		org.junit.Assert.assertEquals(location, mapper.treeToValue(json, CartesianLocation.class));
+	}
+
 }
