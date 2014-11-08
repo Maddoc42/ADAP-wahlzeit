@@ -20,11 +20,14 @@
 
 package org.wahlzeit.model;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.wahlzeit.services.DataObject;
 import org.wahlzeit.services.EmailAddress;
 import org.wahlzeit.services.Language;
 import org.wahlzeit.utils.StringUtil;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -38,6 +41,8 @@ import java.sql.SQLException;
  */
 public class Photo extends DataObject {
 
+	private static final ObjectMapper objectMapper = new ObjectMapper();
+
 	/**
 	 * 
 	 */
@@ -49,15 +54,16 @@ public class Photo extends DataObject {
 	public static final String CAPTION = "caption";
 	public static final String DESCRIPTION = "description";
 	public static final String KEYWORDS = "keywords";
+	public static final String LOCATION = "location";
 
 	public static final String TAGS = "tags";
 
 	public static final String STATUS = "status";
 	public static final String IS_INVISIBLE = "isInvisible";
 	public static final String UPLOADED_ON = "uploadedOn";
-	
+
 	/**
-	 * 
+	 *
 	 */
 	public static final int MAX_PHOTO_WIDTH = 420;
 	public static final int MAX_PHOTO_HEIGHT = 600;
@@ -110,6 +116,8 @@ public class Photo extends DataObject {
 	 * 
 	 */
 	protected long creationTime = System.currentTimeMillis();
+
+	protected Location location;
 	
 	/**
 	 * 
@@ -171,6 +179,14 @@ public class Photo extends DataObject {
 		creationTime = rset.getLong("creation_time");
 
 		maxPhotoSize = PhotoSize.getFromWidthHeight(width, height);
+
+		String locationString = rset.getString("location");
+		try {
+			if (locationString != null)
+				location = objectMapper.treeToValue(objectMapper.readTree(locationString), Location.class);
+		} catch (IOException ioe) {
+
+		}
 	}
 	
 	/**
@@ -190,7 +206,8 @@ public class Photo extends DataObject {
 		rset.updateInt("status", status.asInt());
 		rset.updateInt("praise_sum", praiseSum);
 		rset.updateInt("no_votes", noVotes);
-		rset.updateLong("creation_time", creationTime);		
+		rset.updateLong("creation_time", creationTime);
+		if (hasLocation()) rset.updateString("location", objectMapper.valueToTree(location).toString());
 	}
 
 	/**
@@ -484,5 +501,18 @@ public class Photo extends DataObject {
 	public long getCreationTime() {
 		return creationTime;
 	}
-	
+
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
+		incWriteCount();
+	}
+
+	public boolean hasLocation() {
+		return location != null;
+	}
+
 }
