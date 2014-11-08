@@ -5,7 +5,16 @@ import com.google.common.base.Objects;
 
 import org.wahlzeit.utils.Assert;
 
-public final class GpsLocation implements Location {
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public final class GpsLocation extends AbstractLocation {
+
+	private static final Pattern stringPattern;
+	static {
+		String doublePattern = "[-+]?[0-9]*\\.?[0-9]+([eE][-+]?[0-9]+)?";
+		stringPattern = Pattern.compile("\\((" + doublePattern + "),(" + doublePattern + ")\\)");
+	}
 
 	private final double latitude, longitude;
 
@@ -40,6 +49,22 @@ public final class GpsLocation implements Location {
 	@Override
 	public int hashCode() {
 		return Objects.hashCode(latitude, longitude);
+	}
+
+
+	@Override
+	public String asString() {
+		return String.format("(%f,%f)", latitude, longitude);
+	}
+
+
+	public static GpsLocation fromString(String location) {
+		Assert.assertNotNull(location);
+		Matcher matcher = stringPattern.matcher(location);
+		Assert.assertTrue(matcher.matches(), "could not parse location");
+		double latitude = Double.parseDouble(matcher.group(1));
+		double longitude = Double.parseDouble(matcher.group(3));
+		return new GpsLocation(latitude, longitude);
 	}
 
 }
