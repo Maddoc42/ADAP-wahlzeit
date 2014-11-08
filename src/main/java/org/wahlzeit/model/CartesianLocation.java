@@ -76,4 +76,13 @@ public final class CartesianLocation extends AbstractLocation {
 		return new CartesianLocation(x, y, z);
 	}
 
+
+	protected double doComputeDistanceTo(Location location) {
+		CartesianLocation carLocation = (CartesianLocation) location;
+		return Math.sqrt(
+				Math.pow(carLocation.getX() - this.x, 2) +
+				Math.pow(carLocation.getY() - this.y, 2) +
+				Math.pow(carLocation.getZ() - this.z, 2));
+	}
+
 }

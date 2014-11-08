@@ -8,6 +8,7 @@ import org.wahlzeit.utils.Assert;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
 public final class GpsLocation extends AbstractLocation {
 
 	private static final Pattern stringPattern;
@@ -74,4 +75,17 @@ public final class GpsLocation extends AbstractLocation {
 		return new GpsLocation(latitude, longitude);
 	}
 
+
+	protected double doComputeDistanceTo(Location location) {
+		GpsLocation gpsLocation = (GpsLocation) location;
+		// courtesy to http://stackoverflow.com/a/837957/3892030
+		double earthRadius = 6371; //kilometers
+		double dLat = Math.toRadians(gpsLocation.getLatitude() - latitude);
+		double dLng = Math.toRadians(gpsLocation.getLongitude() - longitude);
+		double a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+				Math.cos(Math.toRadians(latitude)) * Math.cos(Math.toRadians(gpsLocation.getLatitude())) *
+						Math.sin(dLng/2) * Math.sin(dLng/2);
+		double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+		return earthRadius * c;
+	}
 }
