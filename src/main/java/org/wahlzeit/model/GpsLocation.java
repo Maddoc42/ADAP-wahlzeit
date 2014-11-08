@@ -1,6 +1,8 @@
 package org.wahlzeit.model;
 
 
+import com.google.common.base.Objects;
+
 import org.wahlzeit.utils.Assert;
 
 public final class GpsLocation implements Location {
@@ -22,6 +24,22 @@ public final class GpsLocation implements Location {
 
 	public double getLongitude() {
 		return longitude;
+	}
+
+
+	@Override
+	public boolean equals(Object other) {
+		if (other == null || !(other instanceof GpsLocation)) return false;
+		if (other == this) return true;
+		GpsLocation location = (GpsLocation) other;
+		return Objects.equal(latitude, location.latitude)
+				&& Objects.equal(longitude, location.longitude);
+	}
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(latitude, longitude);
 	}
 
 }
