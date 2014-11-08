@@ -63,6 +63,9 @@ public final class CartesianLocation extends AbstractLocation {
 	}
 
 
+	/**
+	 * Creates a new {@link CartesianLocation} instance based on a String returned from {@link #asString}.
+	 */
 	public static CartesianLocation fromString(String location) {
 		Assert.assertNotNull(location);
 		Matcher matcher = stringPattern.matcher(location);

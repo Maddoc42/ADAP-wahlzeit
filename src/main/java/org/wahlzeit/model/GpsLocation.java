@@ -18,6 +18,10 @@ public final class GpsLocation extends AbstractLocation {
 
 	private final double latitude, longitude;
 
+	/**
+	 * @param latitude in degrees
+	 * @param longitude in degrees
+	 */
 	public GpsLocation(double latitude, double longitude) {
 		Assert.assertTrue(latitude >= -90 && latitude <= 90, "latitude must be >= -90 and <= 90");
 		Assert.assertTrue(longitude >= -180 && longitude <= 180, "longitude must be >= -90 and <= 90");
@@ -58,6 +62,9 @@ public final class GpsLocation extends AbstractLocation {
 	}
 
 
+	/**
+	 * Creates a new {@link GpsLocation} instance based on a String returned from {@link #asString}.
+	 */
 	public static GpsLocation fromString(String location) {
 		Assert.assertNotNull(location);
 		Matcher matcher = stringPattern.matcher(location);
