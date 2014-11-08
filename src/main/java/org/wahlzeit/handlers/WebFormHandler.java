@@ -20,9 +20,9 @@
 
 package org.wahlzeit.handlers;
 
-import java.util.*;
-
 import org.wahlzeit.model.UserSession;
+
+import java.util.Map;
 
 
 public interface WebFormHandler extends WebPartHandler {

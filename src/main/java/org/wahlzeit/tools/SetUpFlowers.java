@@ -20,10 +20,10 @@
 
 package org.wahlzeit.tools;
 
-import java.io.File;
+import org.wahlzeit.main.ScriptMain;
+import org.wahlzeit.services.SysConfig;
 
-import org.wahlzeit.main.*;
-import org.wahlzeit.services.*;
+import java.io.File;
 
 /**
  * Sets up a fresh clean Wahlzeit Flowers application database.

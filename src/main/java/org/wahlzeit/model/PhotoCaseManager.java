@@ -20,10 +20,18 @@
 
 package org.wahlzeit.model;
 
-import java.sql.*;
-import java.util.*;
+import org.wahlzeit.services.ObjectManager;
+import org.wahlzeit.services.SysLog;
 
-import org.wahlzeit.services.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
 
 /**
  * The photo case manager provides access to and manages persistent photo cases.

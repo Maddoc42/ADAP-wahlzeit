@@ -20,7 +20,8 @@
 
 package org.wahlzeit.handlers;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**

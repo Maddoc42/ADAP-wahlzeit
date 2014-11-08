@@ -20,9 +20,10 @@
 
 package org.wahlzeit.model;
 
-import java.util.*;
+import org.wahlzeit.services.Language;
 
-import org.wahlzeit.services.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * LanguageConfigs provides a simple access points to different language-based configurations.

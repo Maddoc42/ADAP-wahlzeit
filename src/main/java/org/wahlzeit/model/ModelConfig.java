@@ -20,10 +20,12 @@
 
 package org.wahlzeit.model;
 
-import java.net.*;
+import org.wahlzeit.services.Configuration;
+import org.wahlzeit.services.EmailAddress;
+import org.wahlzeit.services.Language;
+import org.wahlzeit.utils.EnumValue;
 
-import org.wahlzeit.services.*;
-import org.wahlzeit.utils.*;
+import java.net.URL;
 
 
 /**

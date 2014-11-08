@@ -20,7 +20,9 @@
 
 package org.wahlzeit.services;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  * Some convenience methods for dealing with the file system.

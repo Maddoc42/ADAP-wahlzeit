@@ -20,10 +20,14 @@
 
 package org.wahlzeit.webparts;
 
-import java.util.*;
-import java.io.*;
+import org.wahlzeit.services.ConfigDir;
+import org.wahlzeit.services.SysLog;
 
-import org.wahlzeit.services.*;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * The WebPartTemplateService creates WebPartTemplates upon request by reading them from disk.

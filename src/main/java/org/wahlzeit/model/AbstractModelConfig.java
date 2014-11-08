@@ -20,12 +20,20 @@
 
 package org.wahlzeit.model;
 
-import java.io.*;
-import java.text.*;
+import org.wahlzeit.main.ServiceMain;
+import org.wahlzeit.services.AbstractConfig;
+import org.wahlzeit.services.ConfigDir;
+import org.wahlzeit.services.EmailAddress;
+import org.wahlzeit.services.Language;
+import org.wahlzeit.services.SysConfig;
+import org.wahlzeit.services.SysLog;
+import org.wahlzeit.utils.EnumValue;
 
-import org.wahlzeit.main.*;
-import org.wahlzeit.services.*;
-import org.wahlzeit.utils.*;
+import java.io.File;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 
 /**
  * A generic implementation of ModelConfig.

@@ -20,9 +20,10 @@
 
 package org.wahlzeit.model;
 
-import java.util.*;
+import org.wahlzeit.utils.StringUtil;
 
-import org.wahlzeit.utils.*;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * A Tags instance represents a set of tags; each tag ist just a string. All

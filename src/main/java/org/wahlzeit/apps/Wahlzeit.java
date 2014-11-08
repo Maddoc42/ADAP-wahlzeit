@@ -20,11 +20,14 @@
 
 package org.wahlzeit.apps;
 
-import java.io.File;
-import javax.servlet.*;
-
 import org.wahlzeit.main.ServiceMain;
-import org.wahlzeit.services.*;
+import org.wahlzeit.services.SysLog;
+
+import java.io.File;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
 
 /**
  * A simple ServletContextListener to startup and shutdown the Flowers application.

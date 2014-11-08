@@ -20,11 +20,12 @@
 
 package org.wahlzeit.handlers;
 
-import java.util.Enumeration;
+import junit.framework.Test;
+import junit.framework.TestSuite;
 
 import org.wahlzeit.model.UserSession;
 
-import junit.framework.*;
+import java.util.Enumeration;
 
 public class HandlerTestSuite extends TestSuite implements HandlerTest {
 	

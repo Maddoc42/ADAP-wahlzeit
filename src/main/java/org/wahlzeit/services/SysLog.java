@@ -20,7 +20,7 @@
 
 package org.wahlzeit.services;
 
-import java.sql.*;
+import java.sql.Statement;
 
 /**
  * Logging class for logging system-level messages.

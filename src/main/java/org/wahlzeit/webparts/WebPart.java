@@ -20,10 +20,13 @@
 
 package org.wahlzeit.webparts;
 
-import java.util.*;
-import java.io.*;
+import org.wahlzeit.utils.EnumValue;
+import org.wahlzeit.utils.HtmlUtil;
 
-import org.wahlzeit.utils.*;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A WebPart is a Writable formatted as HTML, working off a template.

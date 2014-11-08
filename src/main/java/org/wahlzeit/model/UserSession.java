@@ -20,10 +20,17 @@
 
 package org.wahlzeit.model;
 
-import java.util.*;
+import org.wahlzeit.services.EmailAddress;
+import org.wahlzeit.services.Language;
+import org.wahlzeit.services.Session;
+import org.wahlzeit.services.SysLog;
+import org.wahlzeit.utils.HtmlUtil;
+import org.wahlzeit.utils.StringUtil;
 
-import org.wahlzeit.services.*;
-import org.wahlzeit.utils.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * 

@@ -20,9 +20,10 @@
 
 package org.wahlzeit.model;
 
-import java.sql.*;
+import org.wahlzeit.services.SysLog;
 
-import org.wahlzeit.services.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * 

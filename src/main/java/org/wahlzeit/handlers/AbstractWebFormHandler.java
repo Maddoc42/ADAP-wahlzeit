@@ -20,11 +20,12 @@
 
 package org.wahlzeit.handlers;
 
-import java.util.*;
+import org.wahlzeit.model.AccessRights;
+import org.wahlzeit.model.UserSession;
+import org.wahlzeit.services.SysLog;
+import org.wahlzeit.webparts.WebPart;
 
-import org.wahlzeit.model.*;
-import org.wahlzeit.services.*;
-import org.wahlzeit.webparts.*;
+import java.util.Map;
 
 
 /**

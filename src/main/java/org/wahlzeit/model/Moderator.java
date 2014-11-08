@@ -20,7 +20,7 @@
 
 package org.wahlzeit.model;
 
-import org.wahlzeit.services.*;
+import org.wahlzeit.services.EmailAddress;
 
 /**
  * A Moderator is a system user with moderator privileges.

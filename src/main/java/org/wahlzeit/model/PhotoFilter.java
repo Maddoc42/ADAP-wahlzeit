@@ -20,9 +20,13 @@
 
 package org.wahlzeit.model;
 
-import java.util.*;
-
 import org.wahlzeit.utils.StringUtil;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Random;
 
 /**
  * 

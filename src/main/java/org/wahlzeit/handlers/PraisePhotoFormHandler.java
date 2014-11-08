@@ -20,8 +20,6 @@
 
 package org.wahlzeit.handlers;
 
-import java.util.*;
-
 import org.wahlzeit.agents.Agent;
 import org.wahlzeit.agents.AgentManager;
 import org.wahlzeit.agents.NotifyAboutPraiseAgent;
@@ -32,6 +30,8 @@ import org.wahlzeit.model.UserLog;
 import org.wahlzeit.model.UserSession;
 import org.wahlzeit.utils.StringUtil;
 import org.wahlzeit.webparts.WebPart;
+
+import java.util.Map;
 
 
 

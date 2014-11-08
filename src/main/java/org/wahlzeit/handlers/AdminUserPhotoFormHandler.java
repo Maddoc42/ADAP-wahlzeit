@@ -20,10 +20,16 @@
 
 package org.wahlzeit.handlers;
 
-import java.util.*;
+import org.wahlzeit.model.AccessRights;
+import org.wahlzeit.model.Photo;
+import org.wahlzeit.model.PhotoManager;
+import org.wahlzeit.model.PhotoStatus;
+import org.wahlzeit.model.Tags;
+import org.wahlzeit.model.UserLog;
+import org.wahlzeit.model.UserSession;
+import org.wahlzeit.webparts.WebPart;
 
-import org.wahlzeit.model.*;
-import org.wahlzeit.webparts.*;
+import java.util.Map;
 
 /**
  * 

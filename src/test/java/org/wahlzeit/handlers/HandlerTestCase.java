@@ -20,9 +20,9 @@
 
 package org.wahlzeit.handlers;
 
-import org.wahlzeit.model.*;
+import junit.framework.TestCase;
 
-import junit.framework.*;
+import org.wahlzeit.model.UserSession;
 
 public class HandlerTestCase extends TestCase implements HandlerTest {
 	

@@ -20,11 +20,15 @@
 
 package org.wahlzeit.model;
 
-import java.sql.*;
-import java.net.*;
+import org.wahlzeit.services.DataObject;
+import org.wahlzeit.services.EmailAddress;
+import org.wahlzeit.services.Language;
+import org.wahlzeit.utils.StringUtil;
 
-import org.wahlzeit.services.*;
-import org.wahlzeit.utils.*;
+import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * A photo represents a user-provided (uploaded) photo.

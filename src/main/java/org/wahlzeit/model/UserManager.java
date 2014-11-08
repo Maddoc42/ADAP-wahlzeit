@@ -20,11 +20,22 @@
 
 package org.wahlzeit.model;
 
-import java.util.*;
-import java.sql.*;
+import org.wahlzeit.services.EmailAddress;
+import org.wahlzeit.services.ObjectManager;
+import org.wahlzeit.services.SysLog;
+import org.wahlzeit.services.mailing.EmailService;
+import org.wahlzeit.services.mailing.EmailServiceManager;
 
-import org.wahlzeit.services.*;
-import org.wahlzeit.services.mailing.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 /**
  * The UserManager provides access to and manages Users (including Moderators and Administrators).

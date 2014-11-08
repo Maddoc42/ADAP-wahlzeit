@@ -20,11 +20,12 @@
 
 package org.wahlzeit.model;
 
-import java.net.*;
-import java.text.*;
+import org.wahlzeit.services.Language;
+import org.wahlzeit.utils.HtmlUtil;
 
-import org.wahlzeit.services.*;
-import org.wahlzeit.utils.*;
+import java.net.URL;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 
 /**
  * A model configuration for the English language.

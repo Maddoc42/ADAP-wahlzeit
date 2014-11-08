@@ -20,7 +20,8 @@
 
 package org.wahlzeit.webparts;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * The WebValueManager provides (and creates on-demand) WebValues.

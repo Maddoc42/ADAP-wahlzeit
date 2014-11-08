@@ -1,6 +1,6 @@
 package org.wahlzeit.model;
 
-import junit.framework.*;
+import junit.framework.TestCase;
 
 public class UserStatusTest extends TestCase {
 

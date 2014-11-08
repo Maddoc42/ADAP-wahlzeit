@@ -20,12 +20,20 @@
 
 package org.wahlzeit.model;
 
-import java.util.*;
-import java.net.*;
-import java.sql.*;
+import org.wahlzeit.services.EmailAddress;
+import org.wahlzeit.services.Language;
+import org.wahlzeit.services.Persistent;
+import org.wahlzeit.utils.StringUtil;
 
-import org.wahlzeit.services.*;
-import org.wahlzeit.utils.*;
+import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 /**
  * A User is a client that is logged-in, that is, has registered with the system.

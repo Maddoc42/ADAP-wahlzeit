@@ -20,14 +20,13 @@
 
 package org.wahlzeit.handlers;
 
-import java.util.*;
+import junit.extensions.TestSetup;
+import junit.framework.Test;
 
-import org.wahlzeit.main.*;
-import org.wahlzeit.model.*;
-import org.wahlzeit.services.*;
-
-import junit.framework.*;
-import junit.extensions.*;
+import org.wahlzeit.model.LanguageConfigs;
+import org.wahlzeit.model.UserSession;
+import org.wahlzeit.services.Language;
+import org.wahlzeit.services.SessionManager;
 
 public class HandlerTestSetup extends TestSetup {
 	

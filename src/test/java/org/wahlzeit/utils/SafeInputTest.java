@@ -20,7 +20,7 @@
 
 package org.wahlzeit.utils;
 
-import junit.framework.*;
+import junit.framework.TestCase;
 
 /**
  * 

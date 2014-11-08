@@ -20,11 +20,13 @@
 
 package org.wahlzeit.services;
 
-import java.io.*;
-import java.sql.*;
-import java.text.*;
-
 import org.apache.log4j.Logger;
+
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 /**
  * Simple logging class; should be replaced with log4j or the like.

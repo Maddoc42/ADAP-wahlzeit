@@ -20,8 +20,11 @@
 
 package org.wahlzeit.services;
 
-import java.sql.*;
-import java.util.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Collection;
+import java.util.Iterator;
 
 /**
  * An ObjectManager creates/reads/updates/deletes Persistent (objects) from a (relational) Database.

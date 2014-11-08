@@ -20,10 +20,13 @@
 
 package org.wahlzeit.services;
 
-import java.util.*;
-import javax.mail.internet.*;
+import org.wahlzeit.utils.StringUtil;
 
-import org.wahlzeit.utils.*;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 
 /**
  * An email address provides a simple email address representation.

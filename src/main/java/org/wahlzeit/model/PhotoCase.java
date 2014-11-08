@@ -20,7 +20,9 @@
 
 package org.wahlzeit.model;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 
 /**

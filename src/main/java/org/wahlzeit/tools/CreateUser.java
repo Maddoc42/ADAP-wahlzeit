@@ -20,11 +20,8 @@
 
 package org.wahlzeit.tools;
 
-import java.io.*;
-
-import org.wahlzeit.utils.*;
-import org.wahlzeit.main.*;
-import org.wahlzeit.model.*;
+import org.wahlzeit.main.ScriptMain;
+import org.wahlzeit.utils.StringUtil;
 
 /**
  * 

@@ -20,7 +20,7 @@
 
 package org.wahlzeit.services.mailing;
 
-import javax.mail.*;
+import javax.mail.MessagingException;
 
 /**
  * 

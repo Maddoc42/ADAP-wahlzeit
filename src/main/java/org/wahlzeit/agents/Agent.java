@@ -20,7 +20,10 @@
 
 package org.wahlzeit.agents;
 
-import org.wahlzeit.services.*;
+import org.wahlzeit.services.Session;
+import org.wahlzeit.services.SessionManager;
+import org.wahlzeit.services.SysLog;
+import org.wahlzeit.services.SysSession;
 
 /**
  * 

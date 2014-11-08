@@ -20,7 +20,7 @@
 
 package org.wahlzeit.model;
 
-import org.wahlzeit.services.*;
+import org.wahlzeit.services.Log;
 
 /**
  * Logging class for logging user-level messages.

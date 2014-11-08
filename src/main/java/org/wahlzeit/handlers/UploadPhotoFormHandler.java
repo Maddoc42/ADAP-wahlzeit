@@ -20,13 +20,24 @@
 
 package org.wahlzeit.handlers;
 
-import java.util.*;
-import java.io.*;
+import org.wahlzeit.model.AccessRights;
+import org.wahlzeit.model.Photo;
+import org.wahlzeit.model.PhotoManager;
+import org.wahlzeit.model.Tags;
+import org.wahlzeit.model.User;
+import org.wahlzeit.model.UserLog;
+import org.wahlzeit.model.UserSession;
+import org.wahlzeit.services.SysConfig;
+import org.wahlzeit.services.SysLog;
+import org.wahlzeit.utils.StringUtil;
+import org.wahlzeit.webparts.WebPart;
 
-import org.wahlzeit.model.*;
-import org.wahlzeit.services.*;
-import org.wahlzeit.utils.*;
-import org.wahlzeit.webparts.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Map;
 
 /**
  * 

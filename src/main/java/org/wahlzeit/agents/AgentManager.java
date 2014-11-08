@@ -20,9 +20,11 @@
 
 package org.wahlzeit.agents;
 
-import java.util.*;
-
 import org.wahlzeit.services.SysLog;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  * 

@@ -20,14 +20,14 @@
 
 package org.wahlzeit.handlers;
 
-import java.util.*;
-
 import org.wahlzeit.model.AccessRights;
 import org.wahlzeit.model.Guest;
 import org.wahlzeit.model.UserSession;
 import org.wahlzeit.services.EmailAddress;
 import org.wahlzeit.utils.HtmlUtil;
 import org.wahlzeit.webparts.WebPart;
+
+import java.util.Map;
 
 
 

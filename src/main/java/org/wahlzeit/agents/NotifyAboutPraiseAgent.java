@@ -20,12 +20,18 @@
 
 package org.wahlzeit.agents;
 
+import org.wahlzeit.model.LanguageConfigs;
+import org.wahlzeit.model.ModelConfig;
+import org.wahlzeit.model.Photo;
+import org.wahlzeit.model.User;
+import org.wahlzeit.model.UserLog;
+import org.wahlzeit.model.UserManager;
+import org.wahlzeit.services.EmailAddress;
+import org.wahlzeit.services.mailing.EmailService;
+import org.wahlzeit.services.mailing.EmailServiceManager;
+
 import java.util.HashSet;
 import java.util.Set;
-
-import org.wahlzeit.model.*;
-import org.wahlzeit.services.*;
-import org.wahlzeit.services.mailing.*;
 
 
 /**

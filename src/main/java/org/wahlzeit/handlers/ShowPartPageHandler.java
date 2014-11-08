@@ -20,12 +20,12 @@
 
 package org.wahlzeit.handlers;
 
-import java.util.Map;
-
 import org.wahlzeit.model.AccessRights;
 import org.wahlzeit.model.UserSession;
-import org.wahlzeit.webparts.Writable;
 import org.wahlzeit.webparts.WebPart;
+import org.wahlzeit.webparts.Writable;
+
+import java.util.Map;
 
 
 
