@@ -22,6 +22,8 @@ package org.wahlzeit.handlers;
 
 import org.wahlzeit.model.AccessRights;
 import org.wahlzeit.model.Client;
+import org.wahlzeit.model.GpsLocation;
+import org.wahlzeit.model.Location;
 import org.wahlzeit.model.Photo;
 import org.wahlzeit.model.PhotoFilter;
 import org.wahlzeit.model.PhotoManager;
@@ -173,7 +175,20 @@ public class ShowPhotoPageHandler extends AbstractWebPageHandler implements WebF
 		WebPart caption = createWebPart(us, PartUtil.CAPTION_INFO_FILE);
 		caption.addString(Photo.CAPTION, getPhotoCaption(us, photo));
 		String locationString = "no location present";
-		if (photo.hasLocation()) locationString = photo.getLocation().asString();
+		if (photo.hasLocation()) {
+			Location location = photo.getLocation();
+			// if location contains GPS coordinates display on OSM
+			// this is NOT part of the Location implementation since the implementation should not
+			// dictate which provider to use!
+			if (location instanceof GpsLocation) {
+				GpsLocation gpsLocation = (GpsLocation) location;
+				locationString = "<a href=\"http://www.openstreetmap.org/#map=15/"
+						+ gpsLocation.getLatitude() + "/"
+						+ gpsLocation.getLongitude() + "\">View on OSM</a>";
+			} else  {
+				locationString = photo.getLocation().asString();
+			}
+		}
 		caption.addString(Photo.LOCATION, locationString);
 		page.addWritable(Photo.CAPTION, caption);
 	}
