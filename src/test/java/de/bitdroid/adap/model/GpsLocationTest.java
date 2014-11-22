@@ -1,4 +1,4 @@
-package org.wahlzeit.model;
+package de.bitdroid.adap.model;
 
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import de.bitdroid.adap.model.GpsLocation;
 
 public final class GpsLocationTest {
 

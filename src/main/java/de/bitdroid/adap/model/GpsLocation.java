@@ -1,4 +1,4 @@
-package org.wahlzeit.model;
+package de.bitdroid.adap.model;
 
 
 import com.fasterxml.jackson.annotation.JsonCreator;

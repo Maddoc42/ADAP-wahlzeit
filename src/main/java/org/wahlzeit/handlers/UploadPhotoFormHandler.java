@@ -21,7 +21,7 @@
 package org.wahlzeit.handlers;
 
 import org.wahlzeit.model.AccessRights;
-import org.wahlzeit.model.GpsLocation;
+import de.bitdroid.adap.model.GpsLocation;
 import org.wahlzeit.model.Photo;
 import org.wahlzeit.model.PhotoManager;
 import org.wahlzeit.model.Tags;

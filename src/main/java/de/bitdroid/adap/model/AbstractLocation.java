@@ -1,7 +1,9 @@
-package org.wahlzeit.model;
+package de.bitdroid.adap.model;
 
 
 import org.wahlzeit.utils.Assert;
+
+import de.bitdroid.adap.model.Location;
 
 
 public abstract class AbstractLocation implements Location {

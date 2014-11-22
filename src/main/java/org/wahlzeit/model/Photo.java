@@ -33,6 +33,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import de.bitdroid.adap.model.Location;
+
 /**
  * A photo represents a user-provided (uploaded) photo.
  * 
