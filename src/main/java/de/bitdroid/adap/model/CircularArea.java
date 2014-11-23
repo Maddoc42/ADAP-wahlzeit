@@ -6,7 +6,7 @@ import com.google.common.base.Objects;
 import org.wahlzeit.utils.Assert;
 
 
-public final class CircularArea implements Area {
+final class CircularArea implements Area {
 
 	private final Location center;
 	private final double radius;
