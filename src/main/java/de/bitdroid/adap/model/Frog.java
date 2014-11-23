@@ -9,7 +9,7 @@ import org.wahlzeit.utils.Assert;
 import java.util.EnumSet;
 import java.util.Set;
 
-public abstract class Frog {
+public final class Frog {
 
 	private final String commonName, scientificName;
 	private final ImmutableSet<Animals> diet;
