@@ -37,10 +37,15 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import de.bitdroid.adap.model.FrogFactory;
 import de.bitdroid.adap.model.FrogPhoto;
+import de.bitdroid.adap.model.FrogType;
 import de.bitdroid.adap.model.GpsLocation;
 
 /**
@@ -63,6 +68,21 @@ public class UploadPhotoFormHandler extends AbstractWebFormHandler {
 	protected void doMakeWebPart(UserSession us, WebPart part) {
 		Map<String, Object> args = us.getSavedArgs();
 		part.addStringFromArgs(args, UserSession.MESSAGE);
+
+		// show all possible frog types in drow down menu
+		StringBuilder builder = new StringBuilder();
+		Collection<FrogType> frogTypes = FrogFactory.getAllFrogTypes();
+		List<String> frogCommonNames = new LinkedList<>();
+		for (FrogType type : frogTypes) frogCommonNames.add(type.getCommonName());
+		Collections.sort(frogCommonNames);
+		for (String commonName : frogCommonNames) {
+			builder.append("<option value=\"");
+			builder.append(commonName);
+			builder.append("\">");
+			builder.append(commonName);
+			builder.append("</option>\n");
+		}
+		part.addString("frogOptions", builder.toString());
 
 		part.maskAndAddStringFromArgs(args, Photo.TAGS);
 	}
@@ -99,16 +119,14 @@ public class UploadPhotoFormHandler extends AbstractWebFormHandler {
 					double lat = Double.valueOf(latString);
 					double lon = Double.valueOf(lonString);
 					photo.setLocation(new GpsLocation(lat, lon));
-
-					if (photo instanceof FrogPhoto) {
-						FrogPhoto frogPhoto = (FrogPhoto) photo;
-						if (frogString.equalsIgnoreCase("africanbullfrog")) frogPhoto.setFrogType(FrogFactory.createAfricanBullfrogType());
-						else if (frogString.equalsIgnoreCase("bandedbullfrog")) frogPhoto.setFrogType(FrogFactory.createBandedBullfrogType());
-						else if (frogString.equalsIgnoreCase("americangreentreefrog")) frogPhoto.setFrogType(FrogFactory.createAmericanGreenTreeFrogType());
-					}
 				} catch (Exception e) {
 					SysLog.logThrowable(e);
 				}
+			}
+
+			if (frogString != null && photo instanceof FrogPhoto) {
+				FrogPhoto frogPhoto = (FrogPhoto) photo;
+				frogPhoto.setFrogType(FrogFactory.getFrogTypeByCommonName(frogString));
 			}
 
 			pm.savePhoto(photo);
