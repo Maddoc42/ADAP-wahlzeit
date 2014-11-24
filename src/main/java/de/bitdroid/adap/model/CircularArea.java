@@ -8,9 +8,8 @@ import com.google.common.base.Objects;
 import org.wahlzeit.utils.Assert;
 
 
-final class CircularArea implements Area {
+final class CircularArea extends AbstractArea {
 
-	private final Location center;
 	private final double radius;
 
 
@@ -24,16 +23,9 @@ final class CircularArea implements Area {
 			@JsonProperty("center") Location center,
 			@JsonProperty("radius") double radius) {
 
-		Assert.assertNotNull(center);
+		super(center);
 		Assert.assertTrue(radius > 0, "radius must be > 0");
-		this.center = center;
 		this.radius = radius;
-	}
-
-
-	@Override
-	public Location getCenter() {
-		return center;
 	}
 
 

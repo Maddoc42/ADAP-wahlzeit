@@ -7,9 +7,8 @@ import com.google.common.base.Objects;
 
 import org.wahlzeit.utils.Assert;
 
-final class RectangularArea implements Area {
+final class RectangularArea extends AbstractArea {
 
-	private final Location center;
 	private final double height;
 	private final double width;
 
@@ -25,17 +24,10 @@ final class RectangularArea implements Area {
 			@JsonProperty("width") double width,
 			@JsonProperty("height") double height) {
 
-		Assert.assertNotNull(center);
+		super(center);
 		Assert.assertTrue(width > 0 && height > 0, "width and height bust be > 0");
-		this.center = center;
 		this.width = width;
 		this.height = height;
-	}
-
-
-	@Override
-	public Location getCenter() {
-		return center;
 	}
 
 
