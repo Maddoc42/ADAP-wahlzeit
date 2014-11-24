@@ -36,7 +36,7 @@ import org.wahlzeit.webparts.WritableList;
 
 import java.util.Map;
 
-import de.bitdroid.adap.model.Animals;
+import de.bitdroid.adap.model.Food;
 import de.bitdroid.adap.model.Area;
 import de.bitdroid.adap.model.Frog;
 import de.bitdroid.adap.model.FrogPhoto;
@@ -206,7 +206,7 @@ public class ShowPhotoPageHandler extends AbstractWebPageHandler implements WebF
 				builder.append("<br>");
 				builder.append("Likes to eat ");
 				boolean firstIter = true;
-				for (Animals animal : frog.getDiet()) {
+				for (Food animal : frog.getDiet()) {
 					if (firstIter) firstIter = false;
 					else builder.append(", ");
 					builder.append(Character.toUpperCase(animal.name().charAt(0)) + animal.name().substring(1).toLowerCase());

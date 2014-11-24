@@ -16,7 +16,7 @@ public final class FrogFactory {
 		AFRICAN_BULLFROG = new Frog(
 				"African Bullfrog",
 				"Pyxicephalus adsperus",
-				EnumSet.of(Animals.FISH, Animals.MICE, Animals.FROGS, Animals.LIZARDS),
+				EnumSet.of(Food.FISH, Food.MICE, Food.FROGS, Food.LIZARDS),
 				new NumberRange<>(12.0, true, 24.0, true),
 				Sets.newHashSet(
 						AreaFactory.createCircularArea(new GpsLocation(-19.0169211, 29.1528018), 200),
@@ -27,7 +27,7 @@ public final class FrogFactory {
 		BANDED_BULLFROG = new Frog(
 				"Banded Bullfrog",
 				"Kaloula pulchra",
-				EnumSet.of(Animals.FLIES, Animals.CRICKETS, Animals.MOTHS, Animals.GRASSHOPPERS, Animals.MEALWORMS, Animals.BUTTERWORMS, Animals.WAXWORMS, Animals.EARTHWORMS),
+				EnumSet.of(Food.FLIES, Food.CRICKETS, Food.MOTHS, Food.GRASSHOPPERS, Food.MEALWORMS, Food.BUTTERWORMS, Food.WAXWORMS, Food.EARTHWORMS),
 				new NumberRange<>(7.0, true, 8.0, true),
 				Sets.newHashSet(
 						AreaFactory.createCircularArea(new GpsLocation(21.1289956, 82.7792201), 1000),
@@ -38,7 +38,7 @@ public final class FrogFactory {
 		AMERICAN_GREEN_TREE_FROG = new Frog(
 				"American Green Tree Frog",
 				"Hyla cinerea",
-				EnumSet.of(Animals.FLIES, Animals.CRICKETS, Animals.MOTHS),
+				EnumSet.of(Food.FLIES, Food.CRICKETS, Food.MOTHS),
 				new NumberRange<>(6.0, true, 6.3, true),
 				Sets.newHashSet(
 						AreaFactory.createRectangularArea(new GpsLocation(35.7675961, -89.4247656), 3000, 1000))
@@ -64,7 +64,7 @@ public final class FrogFactory {
 	public static Frog createFrog(
 			String commonName,
 			String scientificName,
-			EnumSet<Animals> diet,
+			EnumSet<Food> diet,
 			NumberRange<Double> sizeRange,
 			Set<Area> habitats) {
 

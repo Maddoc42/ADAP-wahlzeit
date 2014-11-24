@@ -14,7 +14,7 @@ import java.util.Set;
 public final class Frog {
 
 	private final String commonName, scientificName;
-	private final ImmutableSet<Animals> diet;
+	private final ImmutableSet<Food> diet;
 	private final NumberRange<Double> sizeRange;
 	private final ImmutableSet<Area> habitats;
 
@@ -22,7 +22,7 @@ public final class Frog {
 	public Frog(
 			@JsonProperty("commonName") String commonName,
 			@JsonProperty("scientificName") String scientificName,
-			@JsonProperty("diet") EnumSet<Animals> diet,
+			@JsonProperty("diet") EnumSet<Food> diet,
 			@JsonProperty("sizeRange") NumberRange<Double> sizeRange,
 			@JsonProperty("habitats") Set<Area> habitats) {
 
@@ -45,7 +45,7 @@ public final class Frog {
 	}
 
 
-	public ImmutableSet<Animals> getDiet() {
+	public ImmutableSet<Food> getDiet() {
 		return diet;
 	}
 
