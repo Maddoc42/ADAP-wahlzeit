@@ -3,7 +3,6 @@ package de.bitdroid.adap.model;
 
 import org.wahlzeit.model.Photo;
 import org.wahlzeit.model.PhotoId;
-import org.wahlzeit.services.Log;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -34,7 +33,7 @@ public final class FrogPhoto extends Photo {
 		try {
 			if (frogString != null) frog = objectMapper.treeToValue(objectMapper.readTree(frogString), Frog.class);
 		} catch (IOException ioe) {
-			Log.logError("failed to parse json", ioe.getMessage());
+			throw new SQLException(ioe);
 		}
 	}
 
