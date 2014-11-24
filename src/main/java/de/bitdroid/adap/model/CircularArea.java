@@ -14,6 +14,11 @@ final class CircularArea implements Area {
 	private final double radius;
 
 
+	/**
+	 * @param center the center of this circle
+	 * @param radius the radius of this circle
+	 * @throws java.lang.NullPointerException if any parameters were null.
+	 */
 	@JsonCreator
 	public CircularArea(
 			@JsonProperty("center") Location center,
@@ -27,7 +32,7 @@ final class CircularArea implements Area {
 
 
 	@Override
-	public Location getCentroid() {
+	public Location getCenter() {
 		return center;
 	}
 
@@ -37,12 +42,20 @@ final class CircularArea implements Area {
 	}
 
 
+	/**
+	 * @return PI * radius * radius
+	 */
 	@Override
 	public double calculateArea() {
 		return Math.PI * radius * radius;
 	}
 
 
+	/**
+	 * @param area another circular area
+	 * @return true if these two areas intersect and false otherwise.
+	 * @throws java.lang.NullPointerException if any parameters were null.
+	 */
 	public boolean intersects(CircularArea area) {
 		Assert.assertNotNull(area);
 		double distance = center.computeDistanceTo(area.center);

@@ -219,7 +219,7 @@ public class ShowPhotoPageHandler extends AbstractWebPageHandler implements WebF
 				for (Area area: frog.getHabitats()) {
 					if (firstIter) firstIter = false;
 					else builder.append(", ");
-					if (area.getCentroid() instanceof GpsLocation) builder.append(createOsmLink((GpsLocation) area.getCentroid()));
+					if (area.getCenter() instanceof GpsLocation) builder.append(createOsmLink((GpsLocation) area.getCenter()));
 					else builder.append(area.toString());
 				}
 				frogString = builder.toString();

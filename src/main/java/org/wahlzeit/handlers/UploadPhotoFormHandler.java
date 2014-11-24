@@ -104,7 +104,7 @@ public class UploadPhotoFormHandler extends AbstractWebFormHandler {
 						FrogPhoto frogPhoto = (FrogPhoto) photo;
 						if (frogString.equalsIgnoreCase("africanbullfrog")) frogPhoto.setFrog(FrogFactory.createAfricanBullfrog());
 						else if (frogString.equalsIgnoreCase("bandedbullfrog")) frogPhoto.setFrog(FrogFactory.createBandedBullfrog());
-						else if (frogString.equalsIgnoreCase("americangreentreefrog")) frogPhoto.setFrog(FrogFactory.createAmericanGreeTreeFrog());
+						else if (frogString.equalsIgnoreCase("americangreentreefrog")) frogPhoto.setFrog(FrogFactory.createAmericanGreenTreeFrog());
 					}
 				} catch (Exception e) {
 					SysLog.logThrowable(e);

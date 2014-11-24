@@ -6,6 +6,11 @@ import com.google.common.collect.Sets;
 import java.util.EnumSet;
 import java.util.Set;
 
+/**
+ * This factory allows the creation of new {@link de.bitdroid.adap.model.Frog} instances.
+ * As those created instances are immutable, this factory also features a number of common frog
+ * creation methods that will return the same instance when invoked twice.
+ */
 public final class FrogFactory {
 
 	private static final Frog AFRICAN_BULLFROG;
@@ -46,21 +51,33 @@ public final class FrogFactory {
 	}
 
 
+	/**
+	 * @return a instance of an African Bullfrog, see <a href="https://en.wikipedia.org/wiki/African_bullfrog">Wikipedia</a>.
+	 */
 	public static Frog createAfricanBullfrog() {
 		return AFRICAN_BULLFROG;
 	}
 
 
+	/**
+	 * @return a instance of an Banded Bullfrog, see <a href="https://en.wikipedia.org/wiki/Banded_bull_frog">Wikipedia</a>.
+	 */
 	public static Frog createBandedBullfrog() {
 		return BANDED_BULLFROG;
 	}
 
 
-	public static Frog createAmericanGreeTreeFrog() {
+	/**
+	 * @return a instance of an American Green Frog, see <a href="https://en.wikipedia.org/wiki/American_green_tree_frog">Wikipedia</a>.
+	 */
+	public static Frog createAmericanGreenTreeFrog() {
 		return AMERICAN_GREEN_TREE_FROG;
 	}
 
 
+	/**
+	 * Creates a new completely customizable frog instance. See {@link de.bitdroid.adap.model.Frog} for details.
+	 */
 	public static Frog createFrog(
 			String commonName,
 			String scientificName,
@@ -73,6 +90,5 @@ public final class FrogFactory {
 
 
 	private FrogFactory() { }
-
 
 }

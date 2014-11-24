@@ -12,6 +12,14 @@ public final class NumberRange<N extends Number> {
 	private final N start, end;
 	private final boolean startInclusive, endInclusive;
 
+	/**
+	 * @param start the start of the interval.
+	 * @param startInclusive whether start belongs to the interval or should be excluded.
+	 * @param end the end of the interval.
+	 * @param endInclusive whether end belongs to the interval or should be excluded.
+	 * @throws java.lang.NullPointerException if any parameters were null.
+	 * @throws java.lang.IllegalArgumentException if end is before start.
+	 */
 	@JsonCreator
 	public NumberRange(
 			@JsonProperty("start") N start,
@@ -51,14 +59,26 @@ public final class NumberRange<N extends Number> {
 	}
 
 
+	/**
+	 * @param range another range to check for intersection.
+	 * @return true if the two rectangles overlap / intersect, false otherwise.
+	 * @throws java.lang.NullPointerException if any parameters were null.
+	 */
 	public <T extends Number> boolean intersects(NumberRange<T> range) {
+		Assert.assertNotNull(range);
 		if (isValue1BeforeValue2(end, endInclusive, range.start, range.startInclusive)) return false;
 		if (isValue1BeforeValue2(range.end, range.endInclusive, start, startInclusive)) return false;
 		return true;
 	}
 
 
+	/**
+	 * @param range anther range.
+	 * @return true if this range completely contains the other range, false otherwise.
+	 * @throws java.lang.NullPointerException if any parameters were null.
+	 */
 	public <T extends Number> boolean contains(NumberRange<T> range) {
+		Assert.assertNotNull(range);
 		if (!intersects(range)) return false;
 		if (isValue1BeforeValue2(start, startInclusive, range.start, range.startInclusive)
 				&& isValue1BeforeValue2(range.end, range.endInclusive, end, endInclusive)) return true;
@@ -79,8 +99,6 @@ public final class NumberRange<N extends Number> {
 		if (value1Inclusive && value2Inclusive) return false;
 		return true;
 	}
-
-
 
 
 	@Override

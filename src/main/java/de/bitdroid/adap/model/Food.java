@@ -3,6 +3,9 @@ package de.bitdroid.adap.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+/**
+ * A collection of common food items for frogs.
+ */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum Food {
 	MOTHS,

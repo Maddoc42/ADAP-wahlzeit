@@ -18,8 +18,16 @@ public final class Frog {
 	private final NumberRange<Double> sizeRange;
 	private final ImmutableSet<Area> habitats;
 
+	/**
+	 * @param commonName A readable standard name of this frog.
+	 * @param scientificName The scientific name of this frog.
+	 * @param diet What this frog likes to eat.
+	 * @param sizeRange The size of this frog in cm.
+	 * @param habitats Where this frog lives. Distances are assumed to be km.
+	 * @throws java.lang.NullPointerException if any parameters were null.
+	 */
 	@JsonCreator
-	public Frog(
+	Frog(
 			@JsonProperty("commonName") String commonName,
 			@JsonProperty("scientificName") String scientificName,
 			@JsonProperty("diet") EnumSet<Food> diet,

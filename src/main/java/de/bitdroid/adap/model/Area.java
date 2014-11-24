@@ -8,7 +8,14 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, property = "class")
 public interface Area {
 
-	public Location getCentroid();
+	/**
+	 * @return the center of this area
+	 */
+	public Location getCenter();
+
+	/**
+	 * @return the total size of this area in square kilometers
+	 */
 	public double calculateArea();
 
 }
