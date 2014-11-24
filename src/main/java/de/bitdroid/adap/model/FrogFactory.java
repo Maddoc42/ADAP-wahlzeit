@@ -7,18 +7,18 @@ import java.util.EnumSet;
 import java.util.Set;
 
 /**
- * This factory allows the creation of new {@link de.bitdroid.adap.model.Frog} instances.
+ * This factory allows the creation of new {@link FrogType} instances.
  * As those created instances are immutable, this factory also features a number of common frog
  * creation methods that will return the same instance when invoked twice.
  */
 public final class FrogFactory {
 
-	private static final Frog AFRICAN_BULLFROG;
-	private static final Frog BANDED_BULLFROG;
-	private static final Frog AMERICAN_GREEN_TREE_FROG;
+	private static final FrogType AFRICAN_BULLFROG;
+	private static final FrogType BANDED_BULLFROG;
+	private static final FrogType AMERICAN_GREEN_TREE_FROG_TYPE;
 
 	static {
-		AFRICAN_BULLFROG = new Frog(
+		AFRICAN_BULLFROG = new FrogType(
 				"African Bullfrog",
 				"Pyxicephalus adsperus",
 				EnumSet.of(Food.FISH, Food.MICE, Food.FROGS, Food.LIZARDS),
@@ -29,7 +29,7 @@ public final class FrogFactory {
 						AreaFactory.createRectangularArea(new GpsLocation(-22.967062, 18.4929993), 400, 1000))
 				);
 
-		BANDED_BULLFROG = new Frog(
+		BANDED_BULLFROG = new FrogType(
 				"Banded Bullfrog",
 				"Kaloula pulchra",
 				EnumSet.of(Food.FLIES, Food.CRICKETS, Food.MOTHS, Food.GRASSHOPPERS, Food.MEALWORMS, Food.BUTTERWORMS, Food.WAXWORMS, Food.EARTHWORMS),
@@ -40,7 +40,7 @@ public final class FrogFactory {
 						AreaFactory.createRectangularArea(new GpsLocation(-7.3281874, 109.9076899), 1000,120))
 				);
 
-		AMERICAN_GREEN_TREE_FROG = new Frog(
+		AMERICAN_GREEN_TREE_FROG_TYPE = new FrogType(
 				"American Green Tree Frog",
 				"Hyla cinerea",
 				EnumSet.of(Food.FLIES, Food.CRICKETS, Food.MOTHS),
@@ -54,7 +54,7 @@ public final class FrogFactory {
 	/**
 	 * @return a instance of an African Bullfrog, see <a href="https://en.wikipedia.org/wiki/African_bullfrog">Wikipedia</a>.
 	 */
-	public static Frog createAfricanBullfrog() {
+	public static FrogType createAfricanBullfrogType() {
 		return AFRICAN_BULLFROG;
 	}
 
@@ -62,7 +62,7 @@ public final class FrogFactory {
 	/**
 	 * @return a instance of an Banded Bullfrog, see <a href="https://en.wikipedia.org/wiki/Banded_bull_frog">Wikipedia</a>.
 	 */
-	public static Frog createBandedBullfrog() {
+	public static FrogType createBandedBullfrogType() {
 		return BANDED_BULLFROG;
 	}
 
@@ -70,22 +70,22 @@ public final class FrogFactory {
 	/**
 	 * @return a instance of an American Green Frog, see <a href="https://en.wikipedia.org/wiki/American_green_tree_frog">Wikipedia</a>.
 	 */
-	public static Frog createAmericanGreenTreeFrog() {
-		return AMERICAN_GREEN_TREE_FROG;
+	public static FrogType createAmericanGreenTreeFrogType() {
+		return AMERICAN_GREEN_TREE_FROG_TYPE;
 	}
 
 
 	/**
-	 * Creates a new completely customizable frog instance. See {@link de.bitdroid.adap.model.Frog} for details.
+	 * Creates a new completely customizable frog instance. See {@link FrogType} for details.
 	 */
-	public static Frog createFrog(
+	public static FrogType createFrogType(
 			String commonName,
 			String scientificName,
 			EnumSet<Food> diet,
 			NumberRange<Double> sizeRange,
 			Set<Area> habitats) {
 
-		return new Frog(commonName, scientificName, diet, sizeRange, habitats);
+		return new FrogType(commonName, scientificName, diet, sizeRange, habitats);
 	}
 
 

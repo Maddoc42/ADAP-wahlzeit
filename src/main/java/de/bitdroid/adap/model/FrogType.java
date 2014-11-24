@@ -11,7 +11,7 @@ import org.wahlzeit.utils.Assert;
 import java.util.EnumSet;
 import java.util.Set;
 
-public final class Frog {
+public final class FrogType {
 
 	private final String commonName, scientificName;
 	private final ImmutableSet<Food> diet;
@@ -27,7 +27,7 @@ public final class Frog {
 	 * @throws java.lang.NullPointerException if any parameters were null.
 	 */
 	@JsonCreator
-	Frog(
+	FrogType(
 			@JsonProperty("commonName") String commonName,
 			@JsonProperty("scientificName") String scientificName,
 			@JsonProperty("diet") EnumSet<Food> diet,

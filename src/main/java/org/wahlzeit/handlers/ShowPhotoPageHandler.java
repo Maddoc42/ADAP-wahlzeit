@@ -38,7 +38,7 @@ import java.util.Map;
 
 import de.bitdroid.adap.model.Food;
 import de.bitdroid.adap.model.Area;
-import de.bitdroid.adap.model.Frog;
+import de.bitdroid.adap.model.FrogType;
 import de.bitdroid.adap.model.FrogPhoto;
 import de.bitdroid.adap.model.GpsLocation;
 import de.bitdroid.adap.model.Location;
@@ -198,25 +198,25 @@ public class ShowPhotoPageHandler extends AbstractWebPageHandler implements WebF
 		if (photo instanceof FrogPhoto) {
 			FrogPhoto frogPhoto = (FrogPhoto) photo;
 			if (frogPhoto.hasFrog()) {
-				Frog frog = frogPhoto.getFrog();
+				FrogType frogType = frogPhoto.getFrogType();
 				StringBuilder builder = new StringBuilder();
-				builder.append(frog.getScientificName());
+				builder.append(frogType.getScientificName());
 				builder.append(", also known as ");
-				builder.append(frog.getCommonName());
+				builder.append(frogType.getCommonName());
 				builder.append("<br>");
 				builder.append("Likes to eat ");
 				boolean firstIter = true;
-				for (Food animal : frog.getDiet()) {
+				for (Food animal : frogType.getDiet()) {
 					if (firstIter) firstIter = false;
 					else builder.append(", ");
 					builder.append(Character.toUpperCase(animal.name().charAt(0)) + animal.name().substring(1).toLowerCase());
 				}
 				builder.append("<br>");
-				builder.append("Size: " + frog.getSizeRange().getStart() + " to " + frog.getSizeRange().getEnd() + " cm");
+				builder.append("Size: " + frogType.getSizeRange().getStart() + " to " + frogType.getSizeRange().getEnd() + " cm");
 				builder.append("<br>");
 				builder.append("Lives near: ");
 				firstIter = true;
-				for (Area area: frog.getHabitats()) {
+				for (Area area: frogType.getHabitats()) {
 					if (firstIter) firstIter = false;
 					else builder.append(", ");
 					if (area.getCenter() instanceof GpsLocation) builder.append(createOsmLink((GpsLocation) area.getCenter()));
