@@ -43,7 +43,7 @@ import de.bitdroid.adap.model.Location;
  */
 public class Photo extends DataObject {
 
-	private static final ObjectMapper objectMapper = new ObjectMapper();
+	protected static final ObjectMapper objectMapper = new ObjectMapper();
 
 	/**
 	 * 

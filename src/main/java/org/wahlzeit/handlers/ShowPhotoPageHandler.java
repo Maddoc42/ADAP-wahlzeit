@@ -22,8 +22,6 @@ package org.wahlzeit.handlers;
 
 import org.wahlzeit.model.AccessRights;
 import org.wahlzeit.model.Client;
-import de.bitdroid.adap.model.GpsLocation;
-import de.bitdroid.adap.model.Location;
 import org.wahlzeit.model.Photo;
 import org.wahlzeit.model.PhotoFilter;
 import org.wahlzeit.model.PhotoManager;
@@ -37,6 +35,13 @@ import org.wahlzeit.webparts.Writable;
 import org.wahlzeit.webparts.WritableList;
 
 import java.util.Map;
+
+import de.bitdroid.adap.model.Animals;
+import de.bitdroid.adap.model.Area;
+import de.bitdroid.adap.model.Frog;
+import de.bitdroid.adap.model.FrogPhoto;
+import de.bitdroid.adap.model.GpsLocation;
+import de.bitdroid.adap.model.Location;
 
 /**
  * 
@@ -174,22 +179,54 @@ public class ShowPhotoPageHandler extends AbstractWebPageHandler implements WebF
 			
 		WebPart caption = createWebPart(us, PartUtil.CAPTION_INFO_FILE);
 		caption.addString(Photo.CAPTION, getPhotoCaption(us, photo));
-		String locationString = "no location present";
+		String locationString = "unknown";
 		if (photo.hasLocation()) {
 			Location location = photo.getLocation();
 			// if location contains GPS coordinates display on OSM
 			// this is NOT part of the Location implementation since the implementation should not
 			// dictate which provider to use!
 			if (location instanceof GpsLocation) {
-				GpsLocation gpsLocation = (GpsLocation) location;
-				locationString = "<a href=\"http://www.openstreetmap.org/#map=15/"
-						+ gpsLocation.getLatitude() + "/"
-						+ gpsLocation.getLongitude() + "\">View on OSM</a>";
+				locationString = createOsmLink((GpsLocation) location);
 			} else  {
 				locationString = photo.getLocation().asString();
 			}
 		}
-		caption.addString(Photo.LOCATION, locationString);
+		caption.addString(Photo.LOCATION, "Photo was taken at: " + locationString);
+
+		// add frog information
+		String frogString = "Unknown frog";
+		if (photo instanceof FrogPhoto) {
+			FrogPhoto frogPhoto = (FrogPhoto) photo;
+			if (frogPhoto.hasFrog()) {
+				Frog frog = frogPhoto.getFrog();
+				StringBuilder builder = new StringBuilder();
+				builder.append(frog.getScientificName());
+				builder.append(", also known as ");
+				builder.append(frog.getCommonName());
+				builder.append("<br>");
+				builder.append("Likes to eat ");
+				boolean firstIter = true;
+				for (Animals animal : frog.getDiet()) {
+					if (firstIter) firstIter = false;
+					else builder.append(", ");
+					builder.append(Character.toUpperCase(animal.name().charAt(0)) + animal.name().substring(1).toLowerCase());
+				}
+				builder.append("<br>");
+				builder.append("Size: " + frog.getSizeRange().getStart() + " to " + frog.getSizeRange().getEnd() + " cm");
+				builder.append("<br>");
+				builder.append("Lives near: ");
+				firstIter = true;
+				for (Area area: frog.getHabitats()) {
+					if (firstIter) firstIter = false;
+					else builder.append(", ");
+					if (area.getCentroid() instanceof GpsLocation) builder.append(createOsmLink((GpsLocation) area.getCentroid()));
+					else builder.append(area.toString());
+				}
+				frogString = builder.toString();
+			}
+		}
+		caption.addString(FrogPhoto.FROG, frogString);
+
 		page.addWritable(Photo.CAPTION, caption);
 	}
 
@@ -261,5 +298,12 @@ public class ShowPhotoPageHandler extends AbstractWebPageHandler implements WebF
 
 		return result;
 	}
-	
+
+
+	private String createOsmLink(GpsLocation location) {
+		return "<a href=\"http://www.openstreetmap.org/#map=15/"
+				+ location.getLatitude() + "/"
+				+ location.getLongitude() + "\">View on OSM</a>";
+	}
+
 }

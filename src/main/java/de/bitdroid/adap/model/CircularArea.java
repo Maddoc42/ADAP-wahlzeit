@@ -1,6 +1,8 @@
 package de.bitdroid.adap.model;
 
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.Objects;
 
 import org.wahlzeit.utils.Assert;
@@ -12,7 +14,11 @@ final class CircularArea implements Area {
 	private final double radius;
 
 
-	public CircularArea(Location center, double radius) {
+	@JsonCreator
+	public CircularArea(
+			@JsonProperty("center") Location center,
+			@JsonProperty("radius") double radius) {
+
 		Assert.assertNotNull(center);
 		Assert.assertTrue(radius > 0, "radius must be > 0");
 		this.center = center;

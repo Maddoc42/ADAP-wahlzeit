@@ -56,7 +56,7 @@ public final class FrogFactory {
 	}
 
 
-	public static Frog createAmericanGreeTreenFrog() {
+	public static Frog createAmericanGreeTreeFrog() {
 		return AMERICAN_GREEN_TREE_FROG;
 	}
 

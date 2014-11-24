@@ -1,6 +1,8 @@
 package de.bitdroid.adap.model;
 
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.Objects;
 
 import org.wahlzeit.utils.Assert;
@@ -11,7 +13,12 @@ final class RectangularArea implements Area {
 	private final double height;
 	private final double width;
 
-	public RectangularArea(Location centroid, double width, double height) {
+	@JsonCreator
+	public RectangularArea(
+			@JsonProperty("centroid") Location centroid,
+			@JsonProperty("width") double width,
+			@JsonProperty("height") double height) {
+
 		Assert.assertNotNull(centroid);
 		Assert.assertTrue(width > 0 && height > 0, "width and height bust be > 0");
 		this.centroid = centroid;

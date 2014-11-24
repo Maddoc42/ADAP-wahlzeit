@@ -21,7 +21,6 @@
 package org.wahlzeit.handlers;
 
 import org.wahlzeit.model.AccessRights;
-import de.bitdroid.adap.model.GpsLocation;
 import org.wahlzeit.model.Photo;
 import org.wahlzeit.model.PhotoManager;
 import org.wahlzeit.model.Tags;
@@ -39,6 +38,10 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Map;
+
+import de.bitdroid.adap.model.FrogFactory;
+import de.bitdroid.adap.model.FrogPhoto;
+import de.bitdroid.adap.model.GpsLocation;
 
 /**
  * 
@@ -71,6 +74,7 @@ public class UploadPhotoFormHandler extends AbstractWebFormHandler {
 		String tags = us.getAndSaveAsString(args, Photo.TAGS);
 		String latString = us.getAndSaveAsString(args, Photo.LATITUDE);
 		String lonString = us.getAndSaveAsString(args, Photo.LONGITUDE);
+		String frogString = us.getAndSaveAsString(args, FrogPhoto.FROG);
 
 		if (!StringUtil.isLegalTagsString(tags)) {
 			us.setMessage(us.cfg().getInputIsInvalid());
@@ -95,6 +99,13 @@ public class UploadPhotoFormHandler extends AbstractWebFormHandler {
 					double lat = Double.valueOf(latString);
 					double lon = Double.valueOf(lonString);
 					photo.setLocation(new GpsLocation(lat, lon));
+
+					if (photo instanceof FrogPhoto) {
+						FrogPhoto frogPhoto = (FrogPhoto) photo;
+						if (frogString.equalsIgnoreCase("africanbullfrog")) frogPhoto.setFrog(FrogFactory.createAfricanBullfrog());
+						else if (frogString.equalsIgnoreCase("bandedbullfrog")) frogPhoto.setFrog(FrogFactory.createBandedBullfrog());
+						else if (frogString.equalsIgnoreCase("americangreentreefrog")) frogPhoto.setFrog(FrogFactory.createAmericanGreeTreeFrog());
+					}
 				} catch (Exception e) {
 					SysLog.logThrowable(e);
 				}
@@ -105,7 +116,6 @@ public class UploadPhotoFormHandler extends AbstractWebFormHandler {
 			StringBuffer sb = UserLog.createActionEntry("UploadPhoto");
 			UserLog.addCreatedObject(sb, "Photo", photo.getId().asString());
 			UserLog.log(sb);
-			
 			us.setTwoLineMessage(us.cfg().getPhotoUploadSucceeded(), us.cfg().getKeepGoing());
 		} catch (Exception ex) {
 			SysLog.logThrowable(ex);

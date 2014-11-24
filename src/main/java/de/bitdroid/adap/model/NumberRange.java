@@ -1,6 +1,8 @@
 package de.bitdroid.adap.model;
 
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.Objects;
 
 import org.wahlzeit.utils.Assert;
@@ -10,7 +12,13 @@ public final class NumberRange<N extends Number> {
 	private final N start, end;
 	private final boolean startInclusive, endInclusive;
 
-	public NumberRange(N start, boolean startInclusive, N end, boolean endInclusive) {
+	@JsonCreator
+	public NumberRange(
+			@JsonProperty("start") N start,
+			@JsonProperty("startInclusive") boolean startInclusive,
+			@JsonProperty("end") N end,
+			@JsonProperty("endInclusive") boolean endInclusive) {
+
 		Assert.assertNotNull(start, end);
 		Assert.assertFalse(end.doubleValue() < start.doubleValue(), "end must be >= start");
 		if (start.equals(end)) {

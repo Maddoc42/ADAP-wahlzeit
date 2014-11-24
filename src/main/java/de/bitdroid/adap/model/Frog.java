@@ -1,6 +1,8 @@
 package de.bitdroid.adap.model;
 
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
 
@@ -16,12 +18,13 @@ public final class Frog {
 	private final NumberRange<Double> sizeRange;
 	private final ImmutableSet<Area> habitats;
 
+	@JsonCreator
 	public Frog(
-			String commonName,
-			String scientificName,
-			EnumSet<Animals> diet,
-			NumberRange<Double> sizeRange,
-			Set<Area> habitats) {
+			@JsonProperty("commonName") String commonName,
+			@JsonProperty("scientificName") String scientificName,
+			@JsonProperty("diet") EnumSet<Animals> diet,
+			@JsonProperty("sizeRange") NumberRange<Double> sizeRange,
+			@JsonProperty("habitats") Set<Area> habitats) {
 
 		Assert.assertNotNull(commonName, scientificName, diet, sizeRange, habitats);
 		this.commonName = commonName;
