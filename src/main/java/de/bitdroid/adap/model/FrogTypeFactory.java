@@ -15,7 +15,7 @@ import java.util.Map;
  * As those created instances are immutable, this factory also features a number of common frog
  * creation methods that will return the same instance when invoked twice.
  */
-public final class FrogFactory {
+public final class FrogTypeFactory {
 
 	private static final Map<String,  FrogType> frogTypes = new HashMap<>();
 
@@ -75,6 +75,6 @@ public final class FrogFactory {
 	}
 
 
-	private FrogFactory() { }
+	private FrogTypeFactory() { }
 
 }

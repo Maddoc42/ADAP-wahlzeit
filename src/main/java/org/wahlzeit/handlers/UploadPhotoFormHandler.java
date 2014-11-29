@@ -43,7 +43,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import de.bitdroid.adap.model.FrogFactory;
+import de.bitdroid.adap.model.FrogTypeFactory;
 import de.bitdroid.adap.model.FrogPhoto;
 import de.bitdroid.adap.model.FrogType;
 import de.bitdroid.adap.model.GpsLocation;
@@ -71,7 +71,7 @@ public class UploadPhotoFormHandler extends AbstractWebFormHandler {
 
 		// show all possible frog types in drow down menu
 		StringBuilder builder = new StringBuilder();
-		Collection<FrogType> frogTypes = FrogFactory.getAllFrogTypes();
+		Collection<FrogType> frogTypes = FrogTypeFactory.getAllFrogTypes();
 		List<String> frogCommonNames = new LinkedList<>();
 		for (FrogType type : frogTypes) frogCommonNames.add(type.getCommonName());
 		Collections.sort(frogCommonNames);
@@ -126,7 +126,7 @@ public class UploadPhotoFormHandler extends AbstractWebFormHandler {
 
 			if (frogString != null && photo instanceof FrogPhoto) {
 				FrogPhoto frogPhoto = (FrogPhoto) photo;
-				frogPhoto.setFrogType(FrogFactory.getFrogTypeByCommonName(frogString));
+				frogPhoto.setFrogType(FrogTypeFactory.getFrogTypeByCommonName(frogString));
 			}
 
 			pm.savePhoto(photo);
