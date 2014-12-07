@@ -32,6 +32,8 @@ import java.io.File;
 
 import javax.imageio.ImageIO;
 
+import de.bitdroid.adap.model.FrogPhotoFactory;
+
 /**
  * PhotoUtil provides a set of utility functions to create defined images.
  * Images are created from a source in different sizes as needed by the app.
@@ -45,7 +47,7 @@ public class PhotoUtil {
 	 * 
 	 */
 	public static Photo createPhoto(File source, PhotoId id) throws Exception {
-		Photo result = PhotoFactory.getInstance().createPhoto(id);
+		Photo result = FrogPhotoFactory.getInstance().createPhoto(id);
 		
 		Image sourceImage = createImageFiles(source, id);
 

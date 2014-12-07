@@ -25,8 +25,6 @@ import org.wahlzeit.services.SysLog;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import de.bitdroid.adap.model.FrogPhoto;
-
 /**
  * 
  * @author dirkriehle
@@ -81,21 +79,21 @@ public class PhotoFactory {
 	 * @methodtype factory
 	 */
 	public Photo createPhoto() {
-		return new FrogPhoto();
+		return doCreatePhoto();
 	}
 	
 	/**
 	 * 
 	 */
 	public Photo createPhoto(PhotoId id) {
-		return new FrogPhoto(id);
+		return doCreatePhoto(id);
 	}
 	
 	/**
 	 * 
 	 */
 	public Photo createPhoto(ResultSet rs) throws SQLException {
-		return new FrogPhoto(rs);
+		return doCreatePhoto(rs);
 	}
 	
 	/**
@@ -110,6 +108,21 @@ public class PhotoFactory {
 	 */
 	public PhotoTagCollector createPhotoTagCollector() {
 		return new PhotoTagCollector();
+	}
+
+
+	protected Photo doCreatePhoto() {
+		return new Photo();
+	}
+
+
+	protected Photo doCreatePhoto(PhotoId id) {
+		return new Photo(id);
+	}
+
+
+	protected Photo doCreatePhoto(ResultSet rs) throws SQLException {
+		return new Photo(rs);
 	}
 
 }

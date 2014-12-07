@@ -32,6 +32,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import de.bitdroid.adap.model.FrogPhotoFactory;
+
 /**
  * 
  * @author dirkriehle
@@ -59,7 +61,7 @@ public class UserSession extends Session {
 	protected Client client = new Guest();
 	protected PhotoSize photoSize = PhotoSize.MEDIUM;
 	protected long confirmationCode = -1; // -1 means not set
-	protected PhotoFilter photoFilter = PhotoFactory.getInstance().createPhotoFilter();
+	protected PhotoFilter photoFilter = FrogPhotoFactory.getInstance().createPhotoFilter();
 	protected Set praisedPhotos = new HashSet<Photo>();
 
 	/**

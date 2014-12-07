@@ -37,6 +37,8 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
 
+import de.bitdroid.adap.model.FrogPhotoFactory;
+
 /**
  * A photo manager provides access to and manages photos.
  * 
@@ -99,7 +101,7 @@ public class PhotoManager extends ObjectManager {
 	 * 
 	 */
 	public PhotoManager() {
-		photoTagCollector = PhotoFactory.getInstance().createPhotoTagCollector();
+		photoTagCollector = FrogPhotoFactory.getInstance().createPhotoTagCollector();
 	}
 	
 	/**
@@ -147,7 +149,7 @@ public class PhotoManager extends ObjectManager {
 	 * 
 	 */
 	protected Photo createObject(ResultSet rset) throws SQLException {
-		return PhotoFactory.getInstance().createPhoto(rset);
+		return FrogPhotoFactory.getInstance().createPhoto(rset);
 	}
 	
 	/**

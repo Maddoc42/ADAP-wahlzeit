@@ -24,7 +24,6 @@ import org.wahlzeit.model.Case;
 import org.wahlzeit.model.CaseId;
 import org.wahlzeit.model.Photo;
 import org.wahlzeit.model.PhotoCaseManager;
-import org.wahlzeit.model.PhotoFactory;
 import org.wahlzeit.model.PhotoId;
 import org.wahlzeit.model.PhotoManager;
 import org.wahlzeit.model.User;
@@ -66,8 +65,6 @@ public abstract class ModelMain extends AbstractMain {
 		}
 		
  		loadGlobals();
-
-		PhotoFactory.initialize();
 	}
 	
 	/**
