@@ -43,10 +43,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import de.bitdroid.adap.model.FrogTypeFactory;
 import de.bitdroid.adap.model.FrogPhoto;
 import de.bitdroid.adap.model.FrogType;
-import de.bitdroid.adap.model.GpsLocation;
+import de.bitdroid.adap.model.FrogTypeFactory;
+import de.bitdroid.adap.model.LocationFactory;
 
 /**
  * 
@@ -118,7 +118,7 @@ public class UploadPhotoFormHandler extends AbstractWebFormHandler {
 				try {
 					double lat = Double.valueOf(latString);
 					double lon = Double.valueOf(lonString);
-					photo.setLocation(new GpsLocation(lat, lon));
+					photo.setLocation(LocationFactory.createGpsLocation(lat, lon));
 				} catch (Exception e) {
 					SysLog.logThrowable(e);
 				}

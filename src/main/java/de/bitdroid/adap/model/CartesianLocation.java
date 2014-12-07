@@ -21,7 +21,7 @@ public final class CartesianLocation extends AbstractLocation {
 	private final double x, y, z;
 
 	@JsonCreator
-	public CartesianLocation(
+	CartesianLocation(
 			@JsonProperty("x") double x,
 			@JsonProperty("y") double y,
 			@JsonProperty("z") double z) {

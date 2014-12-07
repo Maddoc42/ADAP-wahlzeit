@@ -26,7 +26,7 @@ public final class GpsLocation extends AbstractLocation {
 	 * @param longitude in degrees
 	 */
 	@JsonCreator
-	public GpsLocation(
+	GpsLocation(
 			@JsonProperty("latitude") double latitude,
 			@JsonProperty("longitude") double longitude) {
 		Assert.assertTrue(latitude >= -90 && latitude <= 90, "latitude must be >= -90 and <= 90");
