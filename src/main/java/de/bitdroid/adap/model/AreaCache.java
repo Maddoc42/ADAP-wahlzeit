@@ -8,24 +8,39 @@ import java.util.Map;
 
 public final class AreaCache {
 
-	private static final Map<Integer, List<Area>> cachedAreas = new HashMap<>();
+	private static AreaCache instance;
 
-	public static Area getCircularArea(Location center, double radius) {
-		return cacheAndReturnArea(AreaFactory.createCircularArea(center, radius));
+	public static synchronized AreaCache getInstance() {
+		if (instance == null) instance = new AreaCache(new AreaFactory());
+		return instance;
 	}
 
 
-	public static Area getRectangularArea(Location center, double width, double height) {
-		return cacheAndReturnArea(AreaFactory.createRectangularArea(center, width, height));
+	private final Map<Integer, List<Area>> cachedAreas = new HashMap<>();
+	private final AreaFactory areaFactory;
+
+
+	public AreaCache(AreaFactory areaFactory) {
+		this.areaFactory = areaFactory;
 	}
 
 
-	public static void releaseArea(Area area) {
+	public Area getCircularArea(Location center, double radius) {
+		return cacheAndReturnArea(areaFactory.createCircularArea(center, radius));
+	}
+
+
+	public Area getRectangularArea(Location center, double width, double height) {
+		return cacheAndReturnArea(areaFactory.createRectangularArea(center, width, height));
+	}
+
+
+	public void releaseArea(Area area) {
 		if (cachedAreas.get(area.hashCode()) != null) cachedAreas.get(area.hashCode()).remove(area);
 	}
 
 
-	private static Area cacheAndReturnArea(Area area) {
+	private Area cacheAndReturnArea(Area area) {
 		List<Area> areaList = cachedAreas.get(area.hashCode());
 		if (areaList == null) {
 			areaList = new LinkedList<>();
@@ -39,8 +54,5 @@ public final class AreaCache {
 			return area;
 		}
 	}
-
-
-	private AreaCache() { }
 
 }

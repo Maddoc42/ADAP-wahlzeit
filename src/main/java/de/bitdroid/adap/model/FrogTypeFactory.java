@@ -17,6 +17,7 @@ import java.util.Map;
  */
 public final class FrogTypeFactory {
 
+
 	private static final Map<String,  FrogType> frogTypes = new HashMap<>();
 
 
@@ -27,9 +28,9 @@ public final class FrogTypeFactory {
 				EnumSet.of(Food.FISH, Food.MICE, Food.FROGS, Food.LIZARDS),
 				new NumberRange.Builder<>(12.0, 24.0).startInclusive(true).endInclusive(true).build(),
 				Sets.newHashSet(
-						AreaFactory.createCircularArea(new GpsLocation(-19.0169211, 29.1528018), 200),
-						AreaFactory.createCircularArea(new GpsLocation(0.1768696, 37.9083264), 250),
-						AreaFactory.createRectangularArea(new GpsLocation(-22.967062, 18.4929993), 400, 1000))
+						AreaCache.getInstance().getCircularArea(new GpsLocation(-19.0169211, 29.1528018), 200),
+						AreaCache.getInstance().getCircularArea(new GpsLocation(0.1768696, 37.9083264), 250),
+						AreaCache.getInstance().getRectangularArea(new GpsLocation(-22.967062, 18.4929993), 400, 1000))
 				);
 		frogTypes.put(type.getCommonName(), type);
 
@@ -39,9 +40,9 @@ public final class FrogTypeFactory {
 				EnumSet.of(Food.FLIES, Food.CRICKETS, Food.MOTHS, Food.GRASSHOPPERS, Food.MEALWORMS, Food.BUTTERWORMS, Food.WAXWORMS, Food.EARTHWORMS),
 				new NumberRange.Builder<>(7.0, 8.0).startInclusive(true).endInclusive(true).build(),
 				Sets.newHashSet(
-						AreaFactory.createCircularArea(new GpsLocation(21.1289956, 82.7792201), 1000),
-						AreaFactory.createCircularArea(new GpsLocation(13.03887, 101.490104), 300),
-						AreaFactory.createRectangularArea(new GpsLocation(-7.3281874, 109.9076899), 1000,120))
+						AreaCache.getInstance().getCircularArea(new GpsLocation(21.1289956, 82.7792201), 1000),
+						AreaCache.getInstance().getCircularArea(new GpsLocation(13.03887, 101.490104), 300),
+						AreaCache.getInstance().getRectangularArea(new GpsLocation(-7.3281874, 109.9076899), 1000,120))
 				);
 		frogTypes.put(type.getCommonName(), type);
 
@@ -51,7 +52,7 @@ public final class FrogTypeFactory {
 				EnumSet.of(Food.FLIES, Food.CRICKETS, Food.MOTHS),
 				new NumberRange.Builder<>(6.0, 6.3).startInclusive(true).endInclusive(true).build(),
 				Sets.newHashSet(
-						AreaFactory.createRectangularArea(new GpsLocation(35.7675961, -89.4247656), 3000, 1000))
+						AreaCache.getInstance().getRectangularArea(new GpsLocation(35.7675961, -89.4247656), 3000, 1000))
 		);
 		frogTypes.put(type.getCommonName(), type);
 	}
