@@ -9,10 +9,10 @@ public final class NumberRangeTest {
 
 	@Test
 	public void testEqualsAndHashCode() {
-		NumberRange<Double> range1 = new NumberRange<>(12.0, true, 231.1, false);
-		NumberRange<Double> range2 = new NumberRange<>(12.0, true, 231.1, false);
-		NumberRange<Double> range3 = new NumberRange<>(12.0, false, 231.1, false);
-		NumberRange<Double> range4 = new NumberRange<>(12.1, true, 231.1, false);
+		NumberRange<Double> range1 = new NumberRange.Builder<>(12.0, 231.1).startInclusive(true).endInclusive(false).build();
+		NumberRange<Double> range2 = new NumberRange.Builder<>(12.0, 231.1).startInclusive(true).endInclusive(false).build();
+		NumberRange<Double> range3 = new NumberRange.Builder<>(12.0, 231.1).startInclusive(false).endInclusive(false).build();
+		NumberRange<Double> range4 = new NumberRange.Builder<>(12.1, 231.1).startInclusive(true).endInclusive(false).build();
 		Assert.assertTrue(range1.equals(range2));
 		Assert.assertFalse(range1.equals(range3));
 		Assert.assertFalse(range1.equals(range4));
@@ -24,23 +24,23 @@ public final class NumberRangeTest {
 
 	@Test
 	public void testIntersects() {
-		NumberRange<Integer> range1 = new NumberRange<>(1, true, 3, true);
-		NumberRange<Integer> range2 = new NumberRange<>(2, true, 4, true);
-		NumberRange<Integer> range3 = new NumberRange<>(0, true, 2, true);
+		NumberRange<Integer> range1 = new NumberRange.Builder<>(1, 3).startInclusive(true).endInclusive(true).build();
+		NumberRange<Integer> range2 = new NumberRange.Builder<>(2, 4).startInclusive(true).endInclusive(true).build();
+		NumberRange<Integer> range3 = new NumberRange.Builder<>(0, 2).startInclusive(true).endInclusive(true).build();
 		Assert.assertTrue(range1.intersects(range2));
 		Assert.assertTrue(range2.intersects(range1));
 		Assert.assertTrue(range1.intersects(range3));
 		Assert.assertTrue(range3.intersects(range1));
 
-		NumberRange<Integer> range4 = new NumberRange<>(4, true, 5, true);
-		NumberRange<Integer> range5 = new NumberRange<>(-1, true, 0, true);
+		NumberRange<Integer> range4 = new NumberRange.Builder<>(4,5).startInclusive(true).endInclusive(true).build();
+		NumberRange<Integer> range5 = new NumberRange.Builder<>(-1, 0).startInclusive(true).endInclusive(true).build();
 		Assert.assertFalse(range1.intersects(range4));
 		Assert.assertFalse(range1.intersects(range5));
 
-		NumberRange<Integer> range6 = new NumberRange<>(3, true, 4, true);
-		NumberRange<Integer> range7 = new NumberRange<>(3, false, 4, true);
-		NumberRange<Integer> range8 = new NumberRange<>(0, true, 1, true);
-		NumberRange<Integer> range9 = new NumberRange<>(0, false, 1, false);
+		NumberRange<Integer> range6 = new NumberRange.Builder<>(3, 4).startInclusive(true).endInclusive(true).build();
+		NumberRange<Integer> range7 = new NumberRange.Builder<>(3, 4).startInclusive(false).endInclusive(true).build();
+		NumberRange<Integer> range8 = new NumberRange.Builder<>(0, 1).startInclusive(true).endInclusive(true).build();
+		NumberRange<Integer> range9 = new NumberRange.Builder<>(0, 1).startInclusive(false).endInclusive(false).build();
 		Assert.assertTrue(range1.intersects(range6));
 		Assert.assertFalse(range1.intersects(range7));
 		Assert.assertTrue(range1.intersects(range8));
@@ -50,11 +50,11 @@ public final class NumberRangeTest {
 
 	@Test
 	public void testContains() {
-		NumberRange<Integer> range1 = new NumberRange<>(2, true, 5, true);
-		NumberRange<Integer> range2 = new NumberRange<>(3, true, 4, true);
-		NumberRange<Integer> range3 = new NumberRange<>(1, true, 6, true);
-		NumberRange<Integer> range4 = new NumberRange<>(0, true, 3, true);
-		NumberRange<Integer> range5 = new NumberRange<>(4, true, 6, true);
+		NumberRange<Integer> range1 = new NumberRange.Builder<>(2, 5).startInclusive(true).endInclusive(true).build();
+		NumberRange<Integer> range2 = new NumberRange.Builder<>(3, 4).startInclusive(true).endInclusive(true).build();
+		NumberRange<Integer> range3 = new NumberRange.Builder<>(1, 6).startInclusive(true).endInclusive(true).build();
+		NumberRange<Integer> range4 = new NumberRange.Builder<>(0, 3).startInclusive(true).endInclusive(true).build();
+		NumberRange<Integer> range5 = new NumberRange.Builder<>(4, 6).startInclusive(true).endInclusive(true).build();
 		Assert.assertTrue(range1.contains(range2));
 		Assert.assertFalse(range2.contains(range1));
 		Assert.assertFalse(range1.contains(range3));

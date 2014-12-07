@@ -12,16 +12,9 @@ public final class NumberRange<N extends Number> {
 	private final N start, end;
 	private final boolean startInclusive, endInclusive;
 
-	/**
-	 * @param start the start of the interval.
-	 * @param startInclusive whether start belongs to the interval or should be excluded.
-	 * @param end the end of the interval.
-	 * @param endInclusive whether end belongs to the interval or should be excluded.
-	 * @throws java.lang.NullPointerException if any parameters were null.
-	 * @throws java.lang.IllegalArgumentException if end is before start.
-	 */
+
 	@JsonCreator
-	public NumberRange(
+	private NumberRange(
 			@JsonProperty("start") N start,
 			@JsonProperty("startInclusive") boolean startInclusive,
 			@JsonProperty("end") N end,
@@ -130,6 +123,54 @@ public final class NumberRange<N extends Number> {
 		if (endInclusive) builder.append("]");
 		else builder.append(")");
 		return builder.toString();
+	}
+
+
+	public static final class Builder<N extends Number> {
+
+		private final N start, end;
+		private boolean startInclusive = false, endInclusive = false;
+
+
+		/**
+		 * Creates a new builder for constructing {@link de.bitdroid.adap.model.NumberRange} instances.
+		 * By default start and end are not inclusive. For convenience all method return a this
+		 * reference to allow method chaining.
+		 * @param start the start of the interval.
+		 * @param end the end of the interval.
+		 * @throws java.lang.NullPointerException if any parameters were null.
+		 * @throws java.lang.IllegalArgumentException if end is before start.
+		 */
+		public Builder(N start, N end) {
+			Assert.assertNotNull(start, end);
+			Assert.assertFalse(end.doubleValue() < start.doubleValue(), "end must be >= start");
+			this.start = start;
+			this.end = end;
+		}
+
+
+		/**
+		 * @param startInclusive whether start belongs to the interval or should be excluded.
+		 */
+		public Builder<N> startInclusive(boolean startInclusive) {
+			this.startInclusive = startInclusive;
+			return this;
+		}
+
+
+		/**
+		 * @param endInclusive whether end belongs to the interval or should be excluded.
+		 */
+		public Builder<N> endInclusive(boolean endInclusive) {
+			this.endInclusive = endInclusive;
+			return this;
+		}
+
+
+		public NumberRange<N> build() {
+			return new NumberRange<>(start, startInclusive, end, endInclusive);
+		}
+
 	}
 
 }

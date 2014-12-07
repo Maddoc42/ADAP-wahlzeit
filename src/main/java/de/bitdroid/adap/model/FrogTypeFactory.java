@@ -25,7 +25,7 @@ public final class FrogTypeFactory {
 				"African Bullfrog",
 				"Pyxicephalus adsperus",
 				EnumSet.of(Food.FISH, Food.MICE, Food.FROGS, Food.LIZARDS),
-				new NumberRange<>(12.0, true, 24.0, true),
+				new NumberRange.Builder<>(12.0, 24.0).startInclusive(true).endInclusive(true).build(),
 				Sets.newHashSet(
 						AreaFactory.createCircularArea(new GpsLocation(-19.0169211, 29.1528018), 200),
 						AreaFactory.createCircularArea(new GpsLocation(0.1768696, 37.9083264), 250),
@@ -37,7 +37,7 @@ public final class FrogTypeFactory {
 				"Banded Bullfrog",
 				"Kaloula pulchra",
 				EnumSet.of(Food.FLIES, Food.CRICKETS, Food.MOTHS, Food.GRASSHOPPERS, Food.MEALWORMS, Food.BUTTERWORMS, Food.WAXWORMS, Food.EARTHWORMS),
-				new NumberRange<>(7.0, true, 8.0, true),
+				new NumberRange.Builder<>(7.0, 8.0).startInclusive(true).endInclusive(true).build(),
 				Sets.newHashSet(
 						AreaFactory.createCircularArea(new GpsLocation(21.1289956, 82.7792201), 1000),
 						AreaFactory.createCircularArea(new GpsLocation(13.03887, 101.490104), 300),
@@ -49,7 +49,7 @@ public final class FrogTypeFactory {
 				"American Green Tree Frog",
 				"Hyla cinerea",
 				EnumSet.of(Food.FLIES, Food.CRICKETS, Food.MOTHS),
-				new NumberRange<>(6.0, true, 6.3, true),
+				new NumberRange.Builder<>(6.0, 6.3).startInclusive(true).endInclusive(true).build(),
 				Sets.newHashSet(
 						AreaFactory.createRectangularArea(new GpsLocation(35.7675961, -89.4247656), 3000, 1000))
 		);
