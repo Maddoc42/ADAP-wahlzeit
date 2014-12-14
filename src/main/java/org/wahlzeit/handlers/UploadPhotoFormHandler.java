@@ -43,6 +43,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import de.bitdroid.adap.model.FrogFactory;
 import de.bitdroid.adap.model.FrogPhoto;
 import de.bitdroid.adap.model.FrogType;
 import de.bitdroid.adap.model.FrogTypeFactory;
@@ -95,6 +96,8 @@ public class UploadPhotoFormHandler extends AbstractWebFormHandler {
 		String latString = us.getAndSaveAsString(args, Photo.LATITUDE);
 		String lonString = us.getAndSaveAsString(args, Photo.LONGITUDE);
 		String frogString = us.getAndSaveAsString(args, FrogPhoto.FROG);
+		String frogName = us.getAndSaveAsString(args, FrogPhoto.NAME);
+		String frogAge = us.getAndSaveAsString(args, FrogPhoto.AGE);
 
 		if (!StringUtil.isLegalTagsString(tags)) {
 			us.setMessage(us.cfg().getInputIsInvalid());
@@ -126,7 +129,10 @@ public class UploadPhotoFormHandler extends AbstractWebFormHandler {
 
 			if (frogString != null && photo instanceof FrogPhoto) {
 				FrogPhoto frogPhoto = (FrogPhoto) photo;
-				frogPhoto.setFrogType(FrogTypeFactory.getFrogTypeByCommonName(frogString));
+				frogPhoto.setFrog(FrogFactory.createFrog(
+						frogName,
+						Double.valueOf(frogAge),
+						FrogTypeFactory.getFrogTypeByCommonName(frogString)));
 			}
 
 			pm.savePhoto(photo);

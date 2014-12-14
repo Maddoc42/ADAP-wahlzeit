@@ -10,9 +10,12 @@ import java.sql.SQLException;
 
 public final class FrogPhoto extends Photo {
 
-	public static final String FROG = "frog";
+	public static final String
+			FROG = "frog",
+			NAME = "name",
+			AGE = "age";
 
-	private FrogType frogType;
+	private Frog frog;
 
 	public FrogPhoto() { }
 
@@ -31,7 +34,7 @@ public final class FrogPhoto extends Photo {
 		super.readFrom(rset);
 		String frogString = rset.getString("frog");
 		try {
-			if (frogString != null) frogType = objectMapper.treeToValue(objectMapper.readTree(frogString), FrogType.class);
+			if (frogString != null) frog = objectMapper.treeToValue(objectMapper.readTree(frogString), Frog.class);
 		} catch (IOException ioe) {
 			throw new SQLException(ioe);
 		}
@@ -40,23 +43,23 @@ public final class FrogPhoto extends Photo {
 
 	public void writeOn(ResultSet rset) throws SQLException {
 		super.writeOn(rset);
-		if (hasFrog()) rset.updateString("frog", objectMapper.valueToTree(frogType).toString());
+		if (hasFrog()) rset.updateString("frog", objectMapper.valueToTree(frog).toString());
 	}
 
 
-	public FrogType getFrogType() {
-		return frogType;
+	public Frog getFrog() {
+		return frog;
 	}
 
 
-	public void setFrogType(FrogType frogType) {
-		this.frogType = frogType;
+	public void setFrog(Frog frog) {
+		this.frog = frog;
 		incWriteCount();
 	}
 
 
 	public boolean hasFrog() {
-		return frogType != null;
+		return frog != null;
 	}
 
 

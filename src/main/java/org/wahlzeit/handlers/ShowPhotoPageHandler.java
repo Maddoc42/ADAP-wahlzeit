@@ -36,9 +36,9 @@ import org.wahlzeit.webparts.WritableList;
 
 import java.util.Map;
 
-import de.bitdroid.adap.model.Food;
 import de.bitdroid.adap.model.Area;
-import de.bitdroid.adap.model.FrogType;
+import de.bitdroid.adap.model.Food;
+import de.bitdroid.adap.model.Frog;
 import de.bitdroid.adap.model.FrogPhoto;
 import de.bitdroid.adap.model.GpsLocation;
 import de.bitdroid.adap.model.Location;
@@ -198,25 +198,29 @@ public class ShowPhotoPageHandler extends AbstractWebPageHandler implements WebF
 		if (photo instanceof FrogPhoto) {
 			FrogPhoto frogPhoto = (FrogPhoto) photo;
 			if (frogPhoto.hasFrog()) {
-				FrogType frogType = frogPhoto.getFrogType();
+				Frog frog = frogPhoto.getFrog();
 				StringBuilder builder = new StringBuilder();
-				builder.append(frogType.getScientificName());
+				builder.append(frog.getName());
+				builder.append(", age ");
+				builder.append(frog.getAge());
+				builder.append("<br>");
+				builder.append(frog.getType().getScientificName());
 				builder.append(", also known as ");
-				builder.append(frogType.getCommonName());
+				builder.append(frog.getType().getCommonName());
 				builder.append("<br>");
 				builder.append("Likes to eat ");
 				boolean firstIter = true;
-				for (Food animal : frogType.getDiet()) {
+				for (Food animal : frog.getType().getDiet()) {
 					if (firstIter) firstIter = false;
 					else builder.append(", ");
 					builder.append(Character.toUpperCase(animal.name().charAt(0)) + animal.name().substring(1).toLowerCase());
 				}
 				builder.append("<br>");
-				builder.append("Size: " + frogType.getSizeRange().getStart() + " to " + frogType.getSizeRange().getEnd() + " cm");
+				builder.append("Size: " + frog.getType().getSizeRange().getStart() + " to " + frog.getType().getSizeRange().getEnd() + " cm");
 				builder.append("<br>");
 				builder.append("Lives near: ");
 				firstIter = true;
-				for (Area area: frogType.getHabitats()) {
+				for (Area area: frog.getType().getHabitats()) {
 					if (firstIter) firstIter = false;
 					else builder.append(", ");
 					if (area.getCenter() instanceof GpsLocation) builder.append(createOsmLink((GpsLocation) area.getCenter()));
