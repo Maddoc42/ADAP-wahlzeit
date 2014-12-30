@@ -4,10 +4,11 @@ package de.bitdroid.adap.model;
 import com.google.common.base.Objects;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 
-final class CompositeArea extends AbstractArea {
+final class CompositeArea extends AbstractArea implements Iterable<Area> {
 
 	private final Collection<Area> areas;
 
@@ -20,6 +21,12 @@ final class CompositeArea extends AbstractArea {
 
 	public Collection<Area> getAreas() {
 		return areas;
+	}
+
+
+	@Override
+	public Iterator<Area> iterator() {
+		return areas.iterator();
 	}
 
 
