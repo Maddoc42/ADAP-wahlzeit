@@ -61,4 +61,10 @@ final class RectangularArea extends AbstractArea {
 		return  "(center = " + center.toString() + ", width = " + width + ", height = " + height + ")";
 	}
 
+
+	@Override
+	public <P,R> R accept(AreaVisitor<P,R> visitor, P param) {
+		return visitor.visit(this, param);
+	}
+
 }

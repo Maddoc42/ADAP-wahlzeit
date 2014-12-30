@@ -74,4 +74,10 @@ final class CircularArea extends AbstractArea {
 		return "(center = " + center.toString() + ", radius = " + radius + ")";
 	}
 
+
+	@Override
+	public <P,R> R accept(AreaVisitor<P,R> visitor, P param) {
+		return visitor.visit(this, param);
+	}
+
 }
