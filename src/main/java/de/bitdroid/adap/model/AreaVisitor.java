@@ -5,5 +5,6 @@ public interface AreaVisitor<P, R> {
 
 	public R visit(CircularArea area, P param);
 	public R visit(RectangularArea area, P param);
+	public R visit(CompositeArea area, P param);
 
 }

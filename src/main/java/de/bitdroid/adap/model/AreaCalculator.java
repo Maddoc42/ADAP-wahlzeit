@@ -17,4 +17,10 @@ public final class AreaCalculator implements AreaVisitor<Void, Double> {
 		return area.getHeight() * area.getWidth();
 	}
 
+
+	@Override
+	public Double visit(CompositeArea area, Void param) {
+		return null;
+	}
+
 }
