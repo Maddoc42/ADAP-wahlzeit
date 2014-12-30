@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "class")
-public interface Location {
+public interface Location extends LocationVisitable {
 
 	/**
 	 * Computes the distance between this location and another.
@@ -15,13 +15,5 @@ public interface Location {
 	 * @return the distance between this location and the received location.
 	 */
 	public double computeDistanceTo(Location location);
-
-	/**
-	 * Used by the visitor pattern of {@link de.bitdroid.adap.model.LocationVisitor}
-	 * @param visitor The visitor to execute.
-	 * @param param The parameter to pass to the visitor.
-	 * @return The result of the visitor.
-	 */
-	public <P,R> R accept(LocationVisitor<P,R> visitor, P param);
 
 }

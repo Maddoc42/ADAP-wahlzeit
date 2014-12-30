@@ -6,19 +6,11 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, property = "class")
-public interface Area {
+public interface Area extends AreaVisitable {
 
 	/**
 	 * @return the center of this area.
 	 */
 	public Location getCenter();
-
-	/**
-	 * Used by the visitor pattern of {@link de.bitdroid.adap.model.AreaVisitor}
-	 * @param visitor The visitor to execute.
-	 * @param param The parameter to pass to the visitor.
-	 * @return The result of the visitor.
-	 */
-	public <P,R> R accept(AreaVisitor<P,R> visitor, P param);
 
 }
