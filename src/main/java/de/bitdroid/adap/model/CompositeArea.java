@@ -1,6 +1,8 @@
 package de.bitdroid.adap.model;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.common.base.Objects;
 
 import java.util.Collection;
@@ -8,6 +10,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 
+@JsonDeserialize(builder = CompositeArea.Builder.class)
 final class CompositeArea extends AbstractArea implements Iterable<Area> {
 
 	private final Collection<Area> areas;
@@ -64,6 +67,21 @@ final class CompositeArea extends AbstractArea implements Iterable<Area> {
 
 		public Builder area(Area area) {
 			this.areas.add(area);
+			return this;
+		}
+
+
+		@JsonProperty("areas")
+		public Builder areas(Collection<Area> areas) {
+			this.areas.addAll(areas);
+			return this;
+		}
+
+
+		@JsonProperty("center")
+		public Builder center(Location center) {
+			// does nothing!
+			// ugly hack due to Jackson limitation, see this discussion https://github.com/FasterXML/jackson-databind/issues/95
 			return this;
 		}
 
