@@ -20,7 +20,9 @@ public final class AreaCalculator implements AreaVisitor<Void, Double> {
 
 	@Override
 	public Double visit(CompositeArea area, Void param) {
-		return null;
+		double totalSize = 0;
+		for (Area subArea : area) totalSize += subArea.accept(this, param);
+		return totalSize;
 	}
 
 }
