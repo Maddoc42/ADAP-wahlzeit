@@ -7,15 +7,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Assert;
 import org.junit.Test;
 
-import de.bitdroid.adap.model.CartesianLocation;
-
 public final class CartesianLocationTest {
 
 	private final CartesianLocation location = new CartesianLocation(1.1, 2.2, 3.3);
 
 	@Test
 	public void testStringConversion() {
-		String locationString = location.asString();
+		String locationString = location.toString();
 		Assert.assertEquals(CartesianLocation.fromString(locationString), location);
 	}
 

@@ -7,15 +7,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Assert;
 import org.junit.Test;
 
-import de.bitdroid.adap.model.GpsLocation;
-
 public final class GpsLocationTest {
 
 	private final GpsLocation location = new GpsLocation(45.891, 42.112);
 
 	@Test
 	public void testStringConversion() {
-		String locationString = location.asString();
+		String locationString = location.toString();
 		Assert.assertEquals(GpsLocation.fromString(locationString), location);
 	}
 

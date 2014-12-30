@@ -63,7 +63,7 @@ public final class GpsLocation extends AbstractLocation {
 
 
 	@Override
-	public String asString() {
+	public String toString() {
 		return String.format("(%f,%f)", latitude, longitude);
 	}
 
@@ -75,7 +75,7 @@ public final class GpsLocation extends AbstractLocation {
 
 
 	/**
-	 * Creates a new {@link GpsLocation} instance based on a String returned from {@link #asString}.
+	 * Creates a new {@link GpsLocation} instance based on a String returned from {@link #toString}.
 	 */
 	public static GpsLocation fromString(String location) {
 		Assert.assertNotNull(location);

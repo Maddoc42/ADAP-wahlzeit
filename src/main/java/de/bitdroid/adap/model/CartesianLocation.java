@@ -64,7 +64,7 @@ public final class CartesianLocation extends AbstractLocation {
 
 
 	@Override
-	public String asString() {
+	public String toString() {
 		return String.format("(%f,%f,%f)", x, y, z);
 	}
 
@@ -76,7 +76,7 @@ public final class CartesianLocation extends AbstractLocation {
 
 
 	/**
-	 * Creates a new {@link CartesianLocation} instance based on a String returned from {@link #asString}.
+	 * Creates a new {@link CartesianLocation} instance based on a String returned from {@link #toString()}.
 	 */
 	public static CartesianLocation fromString(String location) {
 		Assert.assertNotNull(location);

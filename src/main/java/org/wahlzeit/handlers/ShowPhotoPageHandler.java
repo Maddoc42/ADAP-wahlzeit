@@ -188,7 +188,7 @@ public class ShowPhotoPageHandler extends AbstractWebPageHandler implements WebF
 			if (location instanceof GpsLocation) {
 				locationString = createOsmLink((GpsLocation) location);
 			} else  {
-				locationString = photo.getLocation().asString();
+				locationString = photo.getLocation().toString();
 			}
 		}
 		caption.addString(Photo.LOCATION, "Photo was taken at: " + locationString);
