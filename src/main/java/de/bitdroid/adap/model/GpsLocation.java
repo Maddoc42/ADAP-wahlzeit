@@ -68,6 +68,12 @@ public final class GpsLocation extends AbstractLocation {
 	}
 
 
+	@Override
+	public <P,R> R accept(LocationVisitor<P,R> visitor, P param) {
+		return visitor.visit(this, param);
+	}
+
+
 	/**
 	 * Creates a new {@link GpsLocation} instance based on a String returned from {@link #asString}.
 	 */

@@ -11,5 +11,6 @@ public interface Location {
 
 	public String asString();
 	public double computeDistanceTo(Location location);
+	public <P,R> R accept(LocationVisitor<P,R> visitor, P param);
 
 }

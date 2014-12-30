@@ -69,6 +69,12 @@ public final class CartesianLocation extends AbstractLocation {
 	}
 
 
+	@Override
+	public <P,R> R accept(LocationVisitor<P,R> visitor, P param) {
+		return visitor.visit(this, param);
+	}
+
+
 	/**
 	 * Creates a new {@link CartesianLocation} instance based on a String returned from {@link #asString}.
 	 */
