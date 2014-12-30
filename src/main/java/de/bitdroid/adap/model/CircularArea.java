@@ -35,15 +35,6 @@ final class CircularArea extends AbstractArea {
 
 
 	/**
-	 * @return PI * radius * radius
-	 */
-	@Override
-	public double calculateArea() {
-		return Math.PI * radius * radius;
-	}
-
-
-	/**
 	 * @param area another circular area
 	 * @return true if these two areas intersect and false otherwise.
 	 * @throws java.lang.NullPointerException if any parameters were null.

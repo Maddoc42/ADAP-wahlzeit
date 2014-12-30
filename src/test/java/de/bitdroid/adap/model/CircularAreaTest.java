@@ -22,15 +22,6 @@ public final class CircularAreaTest {
 
 
 	@Test
-	public void testCalculateCircularArea() {
-		CircularArea area1 = new CircularArea(new GpsLocation(0, 0), 10);
-		CircularArea area2 = new CircularArea(new GpsLocation(2, 2), 10);
-		Assert.assertEquals(10 * 10 * Math.PI, area1.calculateArea(), 0);
-		Assert.assertEquals(10 * 10 * Math.PI, area2.calculateArea(), 0);
-	}
-
-
-	@Test
 	public void testIntersects() {
 		CircularArea area1 = new CircularArea(new GpsLocation(0, 0), 100);
 		CircularArea area2 = new CircularArea(new GpsLocation(1, 1), 100);

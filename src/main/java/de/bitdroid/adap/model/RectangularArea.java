@@ -31,12 +31,13 @@ final class RectangularArea extends AbstractArea {
 	}
 
 
-	/**
-	 * @return height * width
-	 */
-	@Override
-	public double calculateArea() {
-		return height * width;
+	public double getHeight() {
+		return height;
+	}
+
+
+	public double getWidth() {
+		return width;
 	}
 
 

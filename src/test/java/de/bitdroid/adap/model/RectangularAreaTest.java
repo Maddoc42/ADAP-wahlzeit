@@ -18,11 +18,4 @@ public class RectangularAreaTest {
 		Assert.assertFalse(area1.equals(area4));
 	}
 
-
-	@Test
-	public void testCalculateArea() {
-		Area area = new RectangularArea(new GpsLocation(0, 0), 10, 10);
-		Assert.assertTrue(10 * 10 == area.calculateArea());
-	}
-
 }
