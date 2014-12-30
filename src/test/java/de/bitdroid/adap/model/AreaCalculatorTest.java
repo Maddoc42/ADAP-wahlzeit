@@ -4,9 +4,9 @@ package de.bitdroid.adap.model;
 import org.junit.Assert;
 import org.junit.Test;
 
-public final class SizeCalculatorAreaVisitorTest {
+public final class AreaCalculatorTest {
 
-	private final AreaVisitor<Void, Double> visitor = new SizeCalculatorAreaVisitor();
+	private final AreaVisitor<Void, Double> visitor = new AreaCalculator();
 
 
 	@Test

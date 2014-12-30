@@ -4,7 +4,7 @@ package de.bitdroid.adap.model;
 /**
  * Calculates the area of one {@link de.bitdroid.adap.model.Area}.
  */
-public final class SizeCalculatorAreaVisitor implements AreaVisitor<Void, Double> {
+public final class AreaCalculator implements AreaVisitor<Void, Double> {
 
 	@Override
 	public Double visit(CircularArea area, Void param) {
