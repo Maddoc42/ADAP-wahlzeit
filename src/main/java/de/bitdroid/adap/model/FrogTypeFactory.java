@@ -3,7 +3,7 @@ package de.bitdroid.adap.model;
 
 import com.google.common.collect.Sets;
 
-import org.wahlzeit.utils.Assert;
+import de.bitdroid.adap.utils.Assert;
 
 import java.util.Collection;
 import java.util.EnumSet;

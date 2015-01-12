@@ -1,7 +1,7 @@
 package de.bitdroid.adap.model;
 
 
-import org.wahlzeit.utils.Assert;
+import de.bitdroid.adap.utils.Assert;
 
 abstract class AbstractArea implements Area {
 

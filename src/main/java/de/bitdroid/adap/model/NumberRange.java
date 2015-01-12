@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.Objects;
 
-import org.wahlzeit.utils.Assert;
+import de.bitdroid.adap.utils.Assert;
 
 public final class NumberRange<N extends Number> {
 

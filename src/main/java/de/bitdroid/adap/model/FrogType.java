@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
 
-import org.wahlzeit.utils.Assert;
+import de.bitdroid.adap.utils.Assert;
 
 import java.util.EnumSet;
 import java.util.Set;

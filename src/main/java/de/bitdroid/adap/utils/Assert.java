@@ -1,4 +1,4 @@
-package org.wahlzeit.utils;
+package de.bitdroid.adap.utils;
 
 import java.util.List;
 
